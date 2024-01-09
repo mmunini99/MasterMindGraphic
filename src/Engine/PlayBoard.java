@@ -1,6 +1,9 @@
 package Engine;
 
 import Engine.Boards.Board;
+import Engine.Boards.EasyBoard;
+import Engine.Boards.HardBoard;
+import Engine.Boards.MediumBoard;
 import LetGameRun.Play;
 import processing.core.PApplet;
 
@@ -17,13 +20,31 @@ public class PlayBoard {
         SW = arg1;
         actualgame = arg2;
         myWorkflow = WF;
-        gameboard = new Board(SW,WF);
+    }
+
+    //########################## PLAYBOARD FUNCTIONS ###############################
+
+    public void initializePlayBoard(){
+        switch (actualgame.getInput()){
+            case "EASY":
+                gameboard = new EasyBoard(SW,myWorkflow);
+                break;
+            case "MEDIUM":
+                gameboard = new MediumBoard(SW,myWorkflow);
+                break;
+            case "HARD":
+                gameboard = new HardBoard(SW,myWorkflow);
+                break;
+            default:
+                throw new RuntimeException("Input non definito");
+        }
     }
 
     //########################### SHOW #############################################
 
     public void showPlayBoard(){
         if(actualgame.getInitialized()){
+            //System.out.println(actualgame.getInput()); //TODO: to remove
             SW.background(0);
             gameboard.showBoard();
         }

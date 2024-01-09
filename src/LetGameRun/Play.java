@@ -11,7 +11,7 @@ public class Play {
 
     //################# GAME VARIABLES ############################################
     private boolean initializedGame = false;
-    private String input; //input nel codice vecchio
+    private String input = "EASY"; //input nel codice vecchio
     private SetUp gamesetup;
     private int lengthofseq;
     private int trials;
@@ -35,6 +35,10 @@ public class Play {
 
     public boolean getInitialized(){
         return initializedGame;
+    }
+
+    public String getInput(){
+        return input;
     }
 
     //################# SETUP FUNCTIONS ##############################################
@@ -113,7 +117,7 @@ public class Play {
 
         int[] feedback;
 
-        // FINO A QUI FATTO!!!!!!
+        // ###################### FINO A QUI FATTO!!!!!! #########################################
 
         System.out.println("Welcome to Mastermind! Try to guess the " + Integer.toString(lengthofseq) + "-digit secret code.");
 

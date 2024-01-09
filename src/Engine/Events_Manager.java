@@ -40,6 +40,7 @@ public class Events_Manager {
 
     public boolean Button_Pressed(Button B, PApplet SW){
         if(B.on_the_button() && SW.mousePressed){
+            SW.mousePressed = false;
             return true;
         }
         return false;

@@ -13,7 +13,7 @@ public class WorkFlow {
 
     private final Start_Menus start_menus;
     private final SP_menus sp_menus;
-    private PlayBoard playboard;
+    protected PlayBoard playboard;
     protected Play game;
 
     public WorkFlow(PApplet SW){
