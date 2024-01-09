@@ -168,7 +168,7 @@ public class Button {
         }
 
         if(imageButton){
-            //TODO: to do when needed
+            SW.image(ButtonImage,x,y,xsize,ysize);
         }
     }
 

@@ -17,6 +17,9 @@ public class SP_menus {
     Button MediumButton;
     Button HardButton;
 
+    Button RulesButton;
+    Button BackButton;
+
 
 
     public SP_menus(PApplet arg1, WorkFlow arg2){
@@ -25,6 +28,8 @@ public class SP_menus {
         EasyButton = new Button("EASY",SW);
         MediumButton = new Button("MEDIUM",SW);
         HardButton = new Button("HARD",SW);
+        RulesButton = new Button(SW.loadImage("Images/questionmark.png"),SW);
+        BackButton = new Button(SW.loadImage("Images/back.jpg"),SW);
 
         //EasyButton
 
@@ -53,6 +58,18 @@ public class SP_menus {
         HardButton.setTextsizePerc(0.25F);
         HardButton.setPaddingsPerc(0.30F,0.30F);
 
+        //RulesButton
+
+        RulesButton.setPosition(SW.width-200,50);
+        RulesButton.setButtonColor(0,0,0);
+        RulesButton.setSize(100,100);
+
+        //BackButton
+
+        BackButton.setPosition(100,50);
+        BackButton.setButtonColor(0,0,0);
+        BackButton.setSize(100,100);
+
     }
 
     public void difficulty_menu(){
@@ -69,11 +86,38 @@ public class SP_menus {
                 Math.round(SW.width*0.75),
                 Math.round(SW.height*0.375));
 
-        //SHOW DIFFICULTY BUTTONS
+        //SHOW DIFFICULTY AND RULES BUTTONS
 
         EasyButton.showButton();
         MediumButton.showButton();
         HardButton.showButton();
+        RulesButton.showButton();
+        BackButton.showButton();
+
+        //TODO: attiva l'interattività dei bottoni (BACK ✓, EASY ✓, MEDIUM ✓, HARD ✓)
+
+        if(EM.Button_Pressed(BackButton,SW)){
+            myWorkflow.previousStep();
+            SW.clear();
+        }
+        if(EM.Button_Pressed(EasyButton,SW)){
+            myWorkflow.game.setDifficulty(1);
+            myWorkflow.game.initializeGame();
+            myWorkflow.nextStep();
+            SW.clear();
+        }
+        if(EM.Button_Pressed(MediumButton,SW)){
+            myWorkflow.game.setDifficulty(2);
+            myWorkflow.game.initializeGame();
+            myWorkflow.nextStep();
+            SW.clear();
+        }
+        if(EM.Button_Pressed(HardButton,SW)){
+            myWorkflow.game.setDifficulty(3);
+            myWorkflow.game.initializeGame();
+            myWorkflow.nextStep();
+            SW.clear();
+        }
 
     }
 

@@ -13,16 +13,20 @@ public class WorkFlow {
 
     private final Start_Menus start_menus;
     private final SP_menus sp_menus;
-    private Play game;
+    private PlayBoard playboard;
+    protected Play game;
 
     public WorkFlow(PApplet SW){
+        game = new Play();
         start_menus = new Start_Menus(SW,this);
         sp_menus = new SP_menus(SW,this);
+        playboard = new PlayBoard(SW,game,this);
 
         workflow = new Function[]{
                 start_menus::splashing,
                 start_menus::main_menu1,
-                sp_menus::difficulty_menu
+                sp_menus::difficulty_menu,
+                playboard::showPlayBoard
         };
     }
 
@@ -44,6 +48,8 @@ public class WorkFlow {
             throw new java.lang.RuntimeException("GoToStep points to a non existent step; s="+s);
         }
     }
+
+    public void previousStep(){ step = step-1; }
 
     //##################### WORKFLOW FUNCTION ###########################
 

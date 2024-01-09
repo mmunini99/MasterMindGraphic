@@ -6,10 +6,91 @@ import Settings.SetUp;
 import Settings.Round;
 
 public class Play {
+
+    //CODICE AGGIUSTATO PER LA GRAFICA
+
+    //################# GAME VARIABLES ############################################
+    private boolean initializedGame = false;
+    private String input; //input nel codice vecchio
+    private SetUp gamesetup;
+    private int lengthofseq;
+    private int trials;
+    private int lengthoftemplate;
+    private int[] secretCode;
+    private int[] feedback;
+
+    //################# GET FUNCTIONS #############################################
+
+    public int getLengthofseq(){
+        return lengthofseq;
+    }
+
+    public int getTrials(){
+        return trials;
+    }
+
+    public int getLengthoftemplate(){
+        return lengthoftemplate;
+    }
+
+    public boolean getInitialized(){
+        return initializedGame;
+    }
+
+    //################# SETUP FUNCTIONS ##############################################
+
+    public void setDifficulty(int d){
+        switch (d){
+            case 1:
+                input = "EASY";
+                break;
+            case 2:
+                input = "MEDIUM";
+                break;
+            case 3:
+                input = "HARD";
+                break;
+            default:
+                throw new RuntimeException("Difficulty inserted does not exist");
+        }
+    }
+
+    public void initializeGame(){
+        if(input!=null) {
+            gamesetup = new SetUp(input);
+        }
+        else{
+            throw new RuntimeException("Not decided difficulty");
+        }
+        lengthofseq = gamesetup.getNumberofcolor();
+        trials = gamesetup.getNumberoftrials();
+        lengthoftemplate = gamesetup.getLengthTemplate();
+        secretCode = generateSecretCode(lengthofseq, lengthoftemplate);
+        initializedGame = true;
+    }
+
+    //####################### GAME FUNCTIONS ###########################################
+
+    // Generates a random 4-digit secret code
+    private static int[] generateSecretCode(int LOS, int LOT) {
+        int[] code = new int[LOS];
+        Random random = new Random();
+
+        for (int i = 0; i < LOS; i++) {
+            code[i] = random.nextInt((LOT - 1));
+        }
+
+        return code;
+
+    }
+
+/*
+    //CODICE ORIGINALE INTONSO
+
     public static void main(String[] args) {
 
         System.out.println("Enter the level. You can choose between EASY, MEDIUM or HARD");
-        
+
         String input;
 
         do {
@@ -18,7 +99,6 @@ public class Play {
             input = input.toUpperCase();
 
         } while (!checkuserinputlevel(input));
-
 
         System.out.println("You will play with the " + input + " level. Have a nice game!");
 
@@ -32,6 +112,8 @@ public class Play {
         int[] secretCode = generateSecretCode(lengthofseq, lengthoftemplate);
 
         int[] feedback;
+
+        // FINO A QUI FATTO!!!!!!
 
         System.out.println("Welcome to Mastermind! Try to guess the " + Integer.toString(lengthofseq) + "-digit secret code.");
 
@@ -74,19 +156,6 @@ public class Play {
 
 
 
-
-    }
-
-    // Generates a random 4-digit secret code
-    private static int[] generateSecretCode(int lengthofseq, int lengthoftemplate) {
-        int[] code = new int[lengthofseq];
-        Random random = new Random();
-
-        for (int i = 0; i < lengthofseq; i++) {
-            code[i] = random.nextInt((lengthoftemplate - 1));
-        }
-
-        return code;
 
     }
 
@@ -145,4 +214,6 @@ public class Play {
             System.out.println("Sorry, this choice is not allowed. Choose between EASY, MEDIUM or HARD");
             return false;}
     }
+
+ */
 }
