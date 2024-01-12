@@ -101,22 +101,19 @@ public class SP_menus {
             SW.clear();
         }
         if(EM.Button_Pressed(EasyButton,SW)){
-            myWorkflow.game.setDifficulty(1);
-            myWorkflow.game.initializeGame();
+            myWorkflow.difficulty = 1;
             myWorkflow.playboard.initializePlayBoard();
             myWorkflow.nextStep();
             SW.clear();
         }
         if(EM.Button_Pressed(MediumButton,SW)){
-            myWorkflow.game.setDifficulty(2);
-            myWorkflow.game.initializeGame();
+            myWorkflow.difficulty=2;
             myWorkflow.playboard.initializePlayBoard();
             myWorkflow.nextStep();
             SW.clear();
         }
         if(EM.Button_Pressed(HardButton,SW)){
-            myWorkflow.game.setDifficulty(3);
-            myWorkflow.game.initializeGame();
+            myWorkflow.difficulty=3;
             myWorkflow.playboard.initializePlayBoard();
             myWorkflow.nextStep();
             SW.clear();

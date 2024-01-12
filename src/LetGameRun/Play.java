@@ -19,6 +19,8 @@ public class Play {
     private int[] secretCode;
     private int[] feedback;
 
+    private int count;
+
     //################# GET FUNCTIONS #############################################
 
     public int getLengthofseq(){
@@ -39,6 +41,16 @@ public class Play {
 
     public String getInput(){
         return input;
+    }
+
+    public int getCount(){
+        return count;
+    }
+
+    //####################### COUNT FUNCTIONS #######################################
+
+    public void AugCount(){
+        count++;
     }
 
     //################# SETUP FUNCTIONS ##############################################

@@ -13,14 +13,17 @@ public class WorkFlow {
 
     private final Start_Menus start_menus;
     private final SP_menus sp_menus;
+
+    //#################################### TRANSPORT VAR ####################################
+    public int difficulty = -1;
+
+
     protected PlayBoard playboard;
-    protected Play game;
 
     public WorkFlow(PApplet SW){
-        game = new Play();
         start_menus = new Start_Menus(SW,this);
         sp_menus = new SP_menus(SW,this);
-        playboard = new PlayBoard(SW,game,this);
+        playboard = new PlayBoard(SW,this);
 
         workflow = new Function[]{
                 start_menus::splashing,

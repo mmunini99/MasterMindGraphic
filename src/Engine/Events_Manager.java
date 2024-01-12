@@ -46,4 +46,14 @@ public class Events_Manager {
         return false;
     }
 
+    //###################### SLOT EVENT #########################################
+
+    public boolean SlotPressed(Slot S,PApplet SW){
+        if(S.on_the_slot() && SW.mousePressed){
+            SW.mousePressed = false;
+            return true;
+        }
+        return false;
+    }
+
 }

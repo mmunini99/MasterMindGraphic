@@ -1,9 +1,6 @@
 package Engine.Boards;
 
-import Engine.Button;
-import Engine.Events_Manager;
-import Engine.RGB;
-import Engine.WorkFlow;
+import Engine.*;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -17,11 +14,12 @@ public class Board {
     private WorkFlow myWorkflow;
     private Events_Manager EM = new Events_Manager();
 
+    private PlayBoard PB;
+
     //######################## COLOR PALETTE ##################################################
     // ASSIGNED IN THE SUBCLASS CONSTRUCTOR
     private RGB[] Palette;
     private int[][] PalettePositions;
-
     private List<Button> PaletteButtons= new ArrayList<Button>();
 
     //####################### TRIALS ##########################################################
@@ -35,15 +33,20 @@ public class Board {
     private Button BackButton;
     private Button RulesButton;
 
+    //###################### SLOTS #########################################################
+
+    private Slot[][] slots;
+
     //##################### CONSTRUCTOR ######################################################
 
-    public Board(PApplet arg1,WorkFlow WF){
+    public Board(PApplet arg1,WorkFlow WF,PlayBoard arg2){
         //Clean the memory of the previous boards and games
         System.gc();
 
         //######################## FUNDAMENTAL VARS #########################################
         SW = arg1;
         myWorkflow = WF;
+        PB = arg2;
 
         //######################## BACK BUTTON ########################################################
         BackButton = new Button(SW.loadImage("Images/back.jpg"),SW);
@@ -87,12 +90,47 @@ public class Board {
         }
     }
 
+    //########################### SLOTS FUNCTIONS #########################################
+
+    protected void setupSlots(int[][][] positions,int R){
+        slots = new Slot[positions.length][positions[0].length];
+        System.out.println(positions[0].length);
+        for(int i=0;i<positions.length;i++){
+            for(int j=0;j<positions[0].length;j++){
+                slots[i][j] = new Slot(SW);
+                slots[i][j].setPosition(positions[i][j][0],positions[i][j][1]);
+                slots[i][j].setRadius(R);
+                //slots[i][j].SlotActivation(); //TODO: rimuoverla, serve solo per testing temporaneo
+            }
+        }
+    }
+
+    public void slotGroupActivation(int i){
+        if(i>=0 && i<slots.length){
+            for(int j=0;j<slots[i].length;j++){
+                slots[i][j].SlotActivation();
+            }
+        }
+        else{
+            throw new RuntimeException("Activated not existing group of slots");
+        }
+    }
+
+    public void slotGroupDeactivation(int i){
+        if(i>=0 && i<slots.length){
+            for(int j=0;j<slots[i].length;j++){
+                slots[i][j].SlotDeactivation();
+            }
+        }
+        else{
+            throw new RuntimeException("Activated not existing group of slots");
+        }
+    }
 
     //################# SHOW ###############################################################
 
     public void showBoard(){
-        //General buttons //TODO: BACK BUTTON NON FUNZIONA ANCORA. O MEGLIO MI FA TORNARE INDIETRO MA CAMBIANDO MODALITA'
-        //TODO: IL GIOCO VIENE SEMPRE CARICATO NELLA PRIMA MODALITA' SCELTA
+        //General buttons
         BackButton.showButton();
         if(EM.Button_Pressed(BackButton,SW)){
             myWorkflow.previousStep();
@@ -109,6 +147,23 @@ public class Board {
 
         for(int i=0;i<PaletteButtons.size();i++){
             PaletteButtons.get(i).showButton();
+            if(EM.Button_Pressed(PaletteButtons.get(i),SW)){
+                PB.setSelectedColor(i);
+            }
+        }
+
+        for(int i=0;i<slots.length;i++){
+            for(int j=0;j< slots[0].length;j++){
+                slots[i][j].showSlot();
+                if (EM.SlotPressed(slots[i][j], SW) && slots[i][j].isActiveSlot()) {
+                    if (slots[i][j].isSlotEmpty() && PB.getSelectedColor() >= 0) {
+                        slots[i][j].fillSlot(PB.getSelectedColor());
+                        slots[i][j].setActiveColor(Palette[PB.getSelectedColor()]);
+                    } else {
+                            slots[i][j].emptySlot();
+                    }
+                }
+            }
         }
 
     }
