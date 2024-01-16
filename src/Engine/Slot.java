@@ -13,7 +13,8 @@ public class Slot {
     //############################# POSITION, SIZE AND COLOR VARIABLES ####################################
     private int x0 = 0;
     private int y0 = 0;
-    private int r = 5;
+    private int rx = 5;
+    private int ry = 5;
 
     private RGB activeColor=new RGB(255,255,255);
 
@@ -27,7 +28,9 @@ public class Slot {
 
     //####################################### PRIVATE FUNCTIONS ##################################################
     public boolean on_the_slot(){
-        if((Math.sqrt(Math.pow(SW.mouseX-x0,2)+Math.pow(SW.mouseY-y0,2)))<=r){
+        if(((Math.sqrt(Math.pow(SW.mouseX-x0,2)+Math.pow(SW.mouseY-y0,2)))<=rx) ||
+                ((Math.sqrt(Math.pow(SW.mouseX-x0,2)+Math.pow(SW.mouseY-y0,2)))<=ry)
+        ){
             return true;
         }
         return false;
@@ -37,7 +40,7 @@ public class Slot {
         if(on_the_slot()){
             SW.stroke(255,255,255,192);
             SW.fill(255,255,255,192);
-            SW.ellipse(x0,y0,2*r,2*r);
+            SW.ellipse(x0,y0,2*rx,2*ry);
         }
     }
 
@@ -48,8 +51,8 @@ public class Slot {
         y0 = b;
     }
 
-    public void setRadius(int R){
-        r = R;
+    public void setRadius(int RX,int RY){
+        rx = RX; ry=RY;
     }
 
     public void setActiveColor(RGB c){
@@ -102,7 +105,7 @@ public class Slot {
         if(!slot_is_empty){
             SW.stroke(activeColor.getR(),activeColor.getG(),activeColor.getB());
             SW.fill(activeColor.getR(),activeColor.getG(),activeColor.getB());
-            SW.ellipse(x0,y0,2*r,2*r);
+            SW.ellipse(x0,y0,2*rx,2*ry);
         }
     }
 

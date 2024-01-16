@@ -13,14 +13,14 @@ public class PlayBoard {
     private final WorkFlow myWorkflow;
     private Board gameboard;
 
-    private Events_Manager EM = new Events_Manager();
+    private final Events_Manager EM = new Events_Manager();
 
     //####################### VARIABLE TO PLAY ########################################
     private int selected_color=-1;
 
     //########################## BUTTONS ##############################################
 
-    Button CheckButton;
+    private Button CheckButton;
 
     //############################ CONSTRUCTOR ######################################
 
@@ -98,4 +98,5 @@ public class PlayBoard {
     public int getSelectedColor(){
         return selected_color;
     }
+
 }

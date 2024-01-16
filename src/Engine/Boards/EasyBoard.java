@@ -15,32 +15,50 @@ public class EasyBoard extends Board{
 
     PImage easyBoardImage = SW.loadImage("Images/easyBoard.png");
 
-    int SlotRadius = 50;
+    int SlotRadiusX = 48;
+    int SlotRadiusY = 48;
 
     int[][][] SlotsPositions = new int[15][4][2];
 
     private void ComputeSlotPositions(){
-        int a = 50;
-        int b = 50;
-        int effectivewidth = SW.width-2*a;
-        int effectiveheight = SW.height/2-b;
+        int AreaSlotY = 742;
+        float yratio = (float) ysize/easyBoardImage.height;
+        float xratio = (float) xsize/easyBoardImage.width;
         for(int i=0;i<SlotsPositions.length;i++){
             for(int j=0;j<SlotsPositions[0].length;j++){
-                SlotsPositions[i][j][1]=Math.round(SW.height/2.0F + effectiveheight/10.0F + j*effectiveheight/5.0F);
-                SlotsPositions[i][j][0]=Math.round(a+ effectivewidth/30.0F + i*effectivewidth/15.0F);
+                SlotsPositions[i][j][1]= (int) Math.round(y1 + 20.0*yratio + yratio*AreaSlotY/8.0F + j*yratio*AreaSlotY/4.0F);
+                SlotsPositions[i][j][0]= (int) Math.round(x1+ 20.0*xratio + 115.0*xratio + i*250.0*xratio);
             }
         }
     }
 
+    private void calculateImagePadding(){
+        if(SW.width>=SW.height){
+            float ratio = (float) 1.0*easyBoardImage.width /easyBoardImage.height;
+            y1 = SW.height/2;
+            ysize = (SW.height/2)- SW.height/20;
+            xsize = (int) (ratio*ysize);
+            x1 = (int) (SW.width-xsize)/2;
+        }
+        else{
+            float ratio = (float) easyBoardImage.height/easyBoardImage.width;
+            x1 = (int) (SW.width/38.4F);
+            xsize = (int) (SW.width-2*SW.width/38.4F);
+            ysize = (int) (ratio*xsize);
+            y1 = SW.height/2;
+        }
+    }
+
     public EasyBoard(PApplet arg1, WorkFlow WF, PlayBoard arg2) {
-        super(arg1, WF,arg2);
-        ComputeSlotPositions();
+        super(arg1,WF,arg2);
         setPalette(easyPal);
         setNumberOfTrials(easyNOT);
         setImageboard(easyBoardImage);
+        calculateImagePadding();
+        ComputeSlotPositions();
         setPalettePositions(easyPalPos);
 
         setupPaletteButtons();
-        setupSlots(SlotsPositions,SlotRadius);
+        setupSlots(SlotsPositions,SlotRadiusX,SlotRadiusY);
     }
 }

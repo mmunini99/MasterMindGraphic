@@ -29,6 +29,8 @@ public class Board {
     //####################### BOARD IMAGE #####################################################
     private PImage imageboard;
 
+    protected int x1,y1,xsize,ysize;
+
     //##################### GENERAL BUTTONS #################################################
     private Button BackButton;
     private Button RulesButton;
@@ -92,14 +94,14 @@ public class Board {
 
     //########################### SLOTS FUNCTIONS #########################################
 
-    protected void setupSlots(int[][][] positions,int R){
+    protected void setupSlots(int[][][] positions,int RX,int RY){
         slots = new Slot[positions.length][positions[0].length];
         System.out.println(positions[0].length);
         for(int i=0;i<positions.length;i++){
             for(int j=0;j<positions[0].length;j++){
                 slots[i][j] = new Slot(SW);
                 slots[i][j].setPosition(positions[i][j][0],positions[i][j][1]);
-                slots[i][j].setRadius(R);
+                slots[i][j].setRadius(RX,RY);
                 //slots[i][j].SlotActivation(); //TODO: rimuoverla, serve solo per testing temporaneo
             }
         }
@@ -141,7 +143,7 @@ public class Board {
 
         //############################## IMAGES #########################################
 
-        SW.image(imageboard,50,SW.height/2,SW.width-100,(SW.height/2)-50);
+        SW.image(imageboard,x1,y1,xsize,ysize);
 
         //############################ PALETTE BUTTONS ##################################
 
