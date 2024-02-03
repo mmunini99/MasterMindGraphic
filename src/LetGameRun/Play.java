@@ -16,10 +16,14 @@ public class Play {
     private int lengthofseq;
     private int trials;
     private int lengthoftemplate;
-    private int[] secretCode;
+
+    public int[] guessplayer;
+    private static int[] secretCode;
     private int[] feedback;
 
     private int count;
+
+    private boolean winningstatus;
 
     //################# GET FUNCTIONS #############################################
 
@@ -46,6 +50,9 @@ public class Play {
     public int getCount(){
         return count;
     }
+
+
+    public boolean getwinningstatus() { return winningstatus;}
 
     //####################### COUNT FUNCTIONS #######################################
 
@@ -100,136 +107,72 @@ public class Play {
 
     }
 
-/*
-    //CODICE ORIGINALE INTONSO
 
-    public static void main(String[] args) {
+    public void Play(int[] secretCode,
+                     int[] guessplayer,
+                     int lengthofseq) {
 
-        System.out.println("Enter the level. You can choose between EASY, MEDIUM or HARD");
+        this.feedback = provideFeedback(secretCode, guessplayer);
 
-        String input;
+        this.winningstatus = isGameOver(feedback, lengthofseq);
 
-        do {
+    }
 
-            input = System.console().readLine();
-            input = input.toUpperCase();
+    private static int[] provideFeedback( int[] secretCode, int[] playerGuess) {
 
-        } while (!checkuserinputlevel(input));
+        int[] feedbackarray = new int[4];
 
-        System.out.println("You will play with the " + input + " level. Have a nice game!");
-
-        SetUp gamesetup = new SetUp(input);
-
-        int lengthofseq = gamesetup.getNumberofcolor();
-        int trials = gamesetup.getNumberoftrials();
-        int lengthoftemplate = gamesetup.getLengthTemplate();
+        int position = 0;
 
 
-        int[] secretCode = generateSecretCode(lengthofseq, lengthoftemplate);
+        Round provideroffeedback = new Round(secretCode, playerGuess);
 
-        int[] feedback;
 
-        // ###################### FINO A QUI FATTO!!!!!! #########################################
+        int[] feedbackcompressed = provideroffeedback.getFeedback();
 
-        System.out.println("Welcome to Mastermind! Try to guess the " + Integer.toString(lengthofseq) + "-digit secret code.");
+        for (int i = 0; i < 3; i++) {
+            int categoryfeedback = feedbackcompressed[i];
+
+            for (int j = 0; j < categoryfeedback; j++ ) {
+
+                feedbackarray[position] = i;  //if 0 right color/position, if 1 right color only, if 2 wrong
+
+                position += 1;
+
+
+            }
+        }
+
+        return feedbackarray;
+
+    }
+
+
+
+    private static boolean isGameOver(int[] feedback, int lengthofseq) {
+        boolean winning = false;
 
         int count = 0;
 
-        while (count < trials) {
+        for (int i = 0; i < lengthofseq; i++){
 
-
-            int[] playerGuess = getPlayerGuess(lengthofseq, lengthoftemplate);
-
-            feedback = provideFeedback(count, secretCode, playerGuess);
-            displayFeedback(feedback);
-
-            if (isGameOver(feedback, lengthofseq)) {
-
-                count = count + trials + 1;
-
-                System.out.println("Congratulations! You guessed the secret code: " + Arrays.toString(secretCode));
-
-
-            } else if (count < trials && count != trials - 1) {
-                count = count + 1;
-
-                int count_trials = trials - count;
-
-                System.out.println("Look the feedback! You have " + Integer.toString(count_trials) + " guess. Good luck!");
-
-            } else if (count == trials - 1) {
-                count = count + 1;
-
-                System.out.println("Sorry you lose!");
-                System.out.println("The correct combination was: ");
-                System.out.println(Arrays.toString(secretCode));
+            if (feedback[i] == 0) {
+                count += 1;
             }
 
+        }
+        if (count == lengthofseq) {
+
+            winning = true;
 
         }
 
 
-
-
-
-
-    }
-
-    // Gets a guess from the player
-    private static int[] getPlayerGuess(int lengthofseq, int lengthoftemplate) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your" + Integer.toString(lengthofseq)  + "-digit guess: ");
-        String guessString = scanner.nextLine();
-
-        int max_number_to_choose = lengthoftemplate - 1;
-
-        // Validate the input
-        while (guessString.length() != lengthofseq || !guessString.matches("[0-"+ Integer.toString(max_number_to_choose)+ "]+")) {
-            System.out.println("Invalid input. Please enter a "+ Integer.toString(lengthofseq) + "-digit number using digits 0 to "+ Integer.toString(max_number_to_choose) +".");
-            System.out.print("Enter your " + Integer.toString(lengthofseq) + "-digit guess: ");
-            guessString = scanner.nextLine();
-        }
-
-        String guessStringChar = guessString.toString();
-
-        int[] guessStringNumeric = new int[guessStringChar.length()];
-
-        for (int i = 0; i < guessStringChar.length(); i++){
-            guessStringNumeric[i] = guessStringChar.charAt(i) - '0';
-        }
-
-        scanner.close(); // close the Scanner scanner previously open; if we don't do that we have a warning
-
-        return guessStringNumeric;
-    }
-
-    // Provides feedback on the player's guess
-    private static int[] provideFeedback(int round, int[] secretCode, int[] playerGuess) {
-
-
-        Round provideroffeedback = new Round(round, secretCode, playerGuess);
-
-
-        return provideroffeedback.getFeedback();
-    }
-
-    private static void displayFeedback(int[] feedback) {
-        System.out.println("Feedback: " + feedback[0] + " correct position, " + feedback[1] + " correct digit, "+
-                feedback[2] + " wrong guesses");
-    }
-
-    private static boolean isGameOver(int[] feedback, int lengthofseq) {
-        return feedback[0] == lengthofseq;
+        return winning;
     }
 
 
-    private static boolean checkuserinputlevel(String testo) {
-        if (testo.equals("HARD") || testo.equals("MEDIUM") || testo.equals("EASY")) {
-            return true;
-        } else {
-            System.out.println("Sorry, this choice is not allowed. Choose between EASY, MEDIUM or HARD");
-            return false;}
-    }
 
- */
+
+
 }
