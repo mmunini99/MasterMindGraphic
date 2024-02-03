@@ -39,6 +39,8 @@ public class Board {
 
     private Slot[][] slots;
 
+    private Slot[][] feedback_slots;
+
     //##################### CONSTRUCTOR ######################################################
 
     public Board(PApplet arg1,WorkFlow WF,PlayBoard arg2){
@@ -96,13 +98,28 @@ public class Board {
 
     protected void setupSlots(int[][][] positions,int RX,int RY){
         slots = new Slot[positions.length][positions[0].length];
-        System.out.println(positions[0].length);
         for(int i=0;i<positions.length;i++){
             for(int j=0;j<positions[0].length;j++){
                 slots[i][j] = new Slot(SW);
                 slots[i][j].setPosition(positions[i][j][0],positions[i][j][1]);
                 slots[i][j].setRadius(RX,RY);
-                //slots[i][j].SlotActivation(); //TODO: rimuoverla, serve solo per testing temporaneo
+            }
+        }
+    }
+
+    protected void setupFeedbackSlots(int[][][] positions,int RX,int RY){
+        feedback_slots = new Slot[positions.length][positions[0].length];
+        RGB c = new RGB(255,0,0);
+        for(int i=0;i<positions.length;i++){
+            for(int j=0;j<positions[0].length;j++){
+                feedback_slots[i][j] = new Slot(SW);
+                feedback_slots[i][j].setPosition(positions[i][j][0],positions[i][j][1]);
+                feedback_slots[i][j].setRadius(RX,RY);
+                //TODO: QUESTO PEZZO DOPO E' POI DA RIMUOVERE
+                feedback_slots[i][j].SlotActivation();
+                feedback_slots[i][j].fillSlot(1);
+                feedback_slots[i][j].setActiveColor(c);
+                feedback_slots[i][j].SlotDeactivation();
             }
         }
     }
@@ -165,6 +182,12 @@ public class Board {
                             slots[i][j].emptySlot();
                     }
                 }
+            }
+        }
+
+        for(int i=0;i<feedback_slots.length;i++){
+            for(int j=0;j<feedback_slots[0].length;j++){
+                feedback_slots[i][j].showSlot();
             }
         }
 

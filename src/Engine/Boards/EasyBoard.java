@@ -18,7 +18,11 @@ public class EasyBoard extends Board{
     int SlotRadiusX = 48;
     int SlotRadiusY = 48;
 
+    int FeedbackSlotRadiusX = 20;
+    int FeedbackSlotRadiusY = 20;
+
     int[][][] SlotsPositions = new int[15][4][2];
+    int[][][] FeedbackSlotsPositions = new int[15][4][2];
 
     private void ComputeSlotPositions(){
         int AreaSlotY = 742;
@@ -28,6 +32,19 @@ public class EasyBoard extends Board{
             for(int j=0;j<SlotsPositions[0].length;j++){
                 SlotsPositions[i][j][1]= (int) Math.round(y1 + 20.0*yratio + yratio*AreaSlotY/8.0F + j*yratio*AreaSlotY/4.0F);
                 SlotsPositions[i][j][0]= (int) Math.round(x1+ 20.0*xratio + 115.0*xratio + i*250.0*xratio);
+            }
+        }
+    }
+
+    private void ComputeFeedbackSlotPositions(){
+        int AreaSlotY = 178;
+        float yratio = (float) ysize/easyBoardImage.height;
+        float xratio = (float) xsize/easyBoardImage.width;
+        for(int i=0;i<FeedbackSlotsPositions.length;i++) {
+            for (int j = 0; j < FeedbackSlotsPositions[0].length; j++) {
+                FeedbackSlotsPositions[i][j][1] = (int) Math.round(y1 + 782.0 * yratio + yratio * AreaSlotY / 4.0F
+                                                            + Math.floor(j/2.0F) * yratio * AreaSlotY / 2.0F);
+                FeedbackSlotsPositions[i][j][0] = (int) Math.round(x1 + 77.5F * xratio + (j%2)*xratio*115.0 + i * 250.0 * xratio);
             }
         }
     }
@@ -56,9 +73,11 @@ public class EasyBoard extends Board{
         setImageboard(easyBoardImage);
         calculateImagePadding();
         ComputeSlotPositions();
+        ComputeFeedbackSlotPositions();
         setPalettePositions(easyPalPos);
 
         setupPaletteButtons();
         setupSlots(SlotsPositions,SlotRadiusX,SlotRadiusY);
+        setupFeedbackSlots(FeedbackSlotsPositions,FeedbackSlotRadiusX,FeedbackSlotRadiusY);
     }
 }
