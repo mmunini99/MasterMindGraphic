@@ -20,7 +20,7 @@ public class PlayBoard {
 
     //########################## BUTTONS ##############################################
 
-    private Button CheckButton;
+    private final Button CheckButton;
 
     //############################ CONSTRUCTOR ######################################
 
@@ -31,7 +31,7 @@ public class PlayBoard {
         //CHECK BUTTON
         CheckButton = new Button("CHECK",SW);
         CheckButton.setPosition(SW.width/3,50);
-        CheckButton.setButtonColor(180,180,180);
+        CheckButton.setButtonColor(0,255,217);
         CheckButton.setTextcolor(0,0,0);
         CheckButton.setSize(SW.width/3,100);
         CheckButton.setTextsizePerc(0.6F);
@@ -60,6 +60,37 @@ public class PlayBoard {
         gameboard.slotGroupActivation(0);
     }
 
+    private void FeedbackCheck(){
+        int[] playerguess = gameboard.getSlotsContent(actualgame.getCount());
+        actualgame.FeedbackManager(playerguess);
+
+        //TODO: print da rimuovere serve solo per testing
+        System.out.println("PLAYER GUESS:");
+        for(int i=0;i<playerguess.length;i++){
+            System.out.println(playerguess[i]);
+        }
+        System.out.println("FEEDBACK");
+        for(int i=0;i<actualgame.getFeedback().length;i++){
+            System.out.println(actualgame.getFeedback()[i]);
+        }
+
+        gameboard.setFeedbackSlots(actualgame.getFeedback(),actualgame.getCount());
+
+    }
+
+    private boolean ValidGuess(){
+
+        int[] playerguess = gameboard.getSlotsContent(actualgame.getCount());
+
+        for(int j=0; j<playerguess.length;j++){
+            if(playerguess[j]==-1){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     //########################### SHOW #############################################
 
     public void showPlayBoard(){
@@ -67,12 +98,24 @@ public class PlayBoard {
             SW.background(0);
             gameboard.showBoard();
             CheckButton.showButton();
-            if(EM.Button_Pressed(CheckButton,SW)){
-                //TODO: sarà poi da aggiungere tutta la cosa di controllare l'input ecc...
+            if(EM.Button_Pressed(CheckButton,SW) && ValidGuess()){
+                FeedbackCheck();
                 gameboard.slotGroupDeactivation(actualgame.getCount());
                 actualgame.AugCount();
+                //Winning
+                if(actualgame.getwinningstatus()){
+                    System.out.println("HAI VINTO!!!!");
+                    //TODO: ci sarà da aggiungere poi la registrazione dei punteggi e altre cose
+                    myWorkflow.nextStep();
+                    SW.clear();
+                }
+                //Losing
                 if(actualgame.getCount()>=actualgame.getTrials()-1){
-                    SW.exit(); //TODO: aggiustare poi con la sequenza di chiusura
+                    System.out.println("HAI PERSO!!!!");
+                    //TODO: ci sarà da aggiungere poi la registrazione dei punteggi e altre cose
+                    myWorkflow.endgamemenus.setSecretCode(actualgame.getSecretCode(),gameboard.getPalette());
+                    myWorkflow.GoToStep(5);
+                    SW.clear();
                 }
                 gameboard.slotGroupActivation(actualgame.getCount());
             }

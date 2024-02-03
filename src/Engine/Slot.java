@@ -87,6 +87,10 @@ public class Slot {
         slot_is_empty=true;
     }
 
+    public int getContent(){
+        return content;
+    }
+
     //##################################### ACTIVATION FUNCTION #################################################
     public void SlotActivation(){
         activeSlot = true;

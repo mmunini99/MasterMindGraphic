@@ -21,7 +21,7 @@ public class Start_Menus {
         // SP Button
         SP_Button = new Button("Single Player",SW);
         SP_Button.setPosition(200,4*SW.height/10);
-        SP_Button.setButtonColor(0,0,255);
+        SP_Button.setButtonColor(0,255,217);
         SP_Button.setTextcolor(150,0,150);
         SP_Button.setSize(400,200);
         SP_Button.setTextsizePerc(0.25F);
@@ -30,7 +30,7 @@ public class Start_Menus {
         //MP Button
         MP_Button = new Button("Multiplayer",SW);
         MP_Button.setPosition(SW.width-600,4*SW.height/10);
-        MP_Button.setButtonColor(0,0,255);
+        MP_Button.setButtonColor(0,255,217);
         MP_Button.setTextcolor(150,0,150);
         MP_Button.setSize(400,200);
         MP_Button.setTextsizePerc(0.25F);
@@ -39,7 +39,7 @@ public class Start_Menus {
         //EXIT Button
         Exit_Button = new Button("EXIT",SW);
         Exit_Button.setPosition((SW.width/2)-200,3*SW.height/4);
-        Exit_Button.setButtonColor(0,0,255);
+        Exit_Button.setButtonColor(0,255,217);
         Exit_Button.setTextcolor(150,0,150);
         Exit_Button.setSize(400,200);
         Exit_Button.setTextsizePerc(0.25F);
@@ -57,9 +57,9 @@ public class Start_Menus {
     }
 
     public void main_menu1(){
-        SW.background(255);
+        SW.background(0);
         //Title
-        SW.fill(39,100,0); //dark green
+        SW.fill(0,255,217); //cyan
         String title = "Mastermind";
         SW.textSize(Math.round(0.15*SW.height));
         SW.text(title,

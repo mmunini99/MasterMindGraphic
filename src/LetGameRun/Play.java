@@ -1,7 +1,5 @@
 package LetGameRun;
 import java.util.Random;
-import java.util.Arrays;
-import java.util.Scanner;
 import Settings.SetUp;
 import Settings.Round;
 
@@ -17,7 +15,6 @@ public class Play {
     private int trials;
     private int lengthoftemplate;
 
-    public int[] guessplayer;
     private static int[] secretCode;
     private int[] feedback;
 
@@ -51,8 +48,14 @@ public class Play {
         return count;
     }
 
-
+    public int[] getFeedback(){
+        return feedback;
+    }
     public boolean getwinningstatus() { return winningstatus;}
+
+    public int[] getSecretCode(){
+        return secretCode;
+    }
 
     //####################### COUNT FUNCTIONS #######################################
 
@@ -85,10 +88,16 @@ public class Play {
         else{
             throw new RuntimeException("Not decided difficulty");
         }
-        lengthofseq = gamesetup.getNumberofcolor();
+        lengthofseq = 4;
         trials = gamesetup.getNumberoftrials();
         lengthoftemplate = gamesetup.getLengthTemplate();
         secretCode = generateSecretCode(lengthofseq, lengthoftemplate);
+        //TODO: da rimuovere, è solo per testing
+        System.out.println("SECRET CODE:");
+        for(int i=0;i<secretCode.length;i++) {
+            System.out.println(secretCode[i]);
+        }
+        //TODO: FINO A QUI!
         initializedGame = true;
     }
 
@@ -100,17 +109,16 @@ public class Play {
         Random random = new Random();
 
         for (int i = 0; i < LOS; i++) {
-            code[i] = random.nextInt((LOT - 1));
+            code[i] = random.nextInt(LOT);
         }
 
         return code;
 
     }
 
+    public Play(){}
 
-    public void Play(int[] secretCode,
-                     int[] guessplayer,
-                     int lengthofseq) {
+    public void FeedbackManager( int[] guessplayer) {
 
         this.feedback = provideFeedback(secretCode, guessplayer);
 
@@ -152,16 +160,16 @@ public class Play {
     private static boolean isGameOver(int[] feedback, int lengthofseq) {
         boolean winning = false;
 
-        int count = 0;
+        int counter = 0;
 
         for (int i = 0; i < lengthofseq; i++){
 
             if (feedback[i] == 0) {
-                count += 1;
+                counter += 1;
             }
 
         }
-        if (count == lengthofseq) {
+        if (counter == lengthofseq) {
 
             winning = true;
 

@@ -28,7 +28,7 @@ public class RGB {
             B = b;
         }
         else{
-            throw new RuntimeException("Valore di un colore fuori dal range permesso");
+            throw new RuntimeException("The value associated to the color is outside the permitted range");
         }
     }
 

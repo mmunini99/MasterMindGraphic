@@ -7,9 +7,9 @@ public class SP_menus {
     //######################### FUNDAMENTALS VARIABLES ######################################
     private final PApplet SW;
 
-    private Events_Manager EM = new Events_Manager();
+    private final Events_Manager EM = new Events_Manager();
 
-    private WorkFlow myWorkflow;
+    private final WorkFlow myWorkflow;
 
     //######################## DIFFICULTY BUTTONS #########################################
 
@@ -77,7 +77,7 @@ public class SP_menus {
 
         //DOMANDA
 
-        SW.fill(39,100,0);
+        SW.fill(0,255,217);
         String title = "Select the difficulty level";
         SW.textSize(Math.round(0.05*SW.height));
         SW.text(title,

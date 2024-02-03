@@ -5,15 +5,15 @@ import processing.core.PImage;
 
 public class Button {
 
-    private PApplet SW;
+    private final PApplet SW;
 
     //########################### COLORI #########################################
-    private RGB basecolor= new RGB(0,0,0);
-    private RGB hoo_color = new RGB(0,0,0);
+    private final RGB basecolor= new RGB(0,0,0);
+    private final RGB hoo_color = new RGB(0,0,0);
     private RGB textcolor= new RGB(255,255,255);
     private RGB bordercolor = new RGB(0,0,0);
 
-    private float hoo_light = 0.50F;
+    private final float hoo_light = 0.50F;
 
     //####################### IMPOSTAZIONI DEI TESTI ###########################
 

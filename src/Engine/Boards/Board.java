@@ -22,6 +22,10 @@ public class Board {
     private int[][] PalettePositions;
     private List<Button> PaletteButtons= new ArrayList<Button>();
 
+    //###################### FEEDBACK COLORS #################################################
+
+    private RGB[] feedback_color = new RGB[3];
+
     //####################### TRIALS ##########################################################
     //ASSIGNED IN THE SUBCLASS CONSTRUCTOR
     private int NumberOfTrials;
@@ -51,6 +55,12 @@ public class Board {
         SW = arg1;
         myWorkflow = WF;
         PB = arg2;
+
+        //####################### FEEDBACK COLORS ###########################################
+
+        feedback_color[0] = new RGB(255,0,0);
+        feedback_color[1] = new RGB(255,255,255);
+        feedback_color[2] = new RGB(0,0,0);
 
         //######################## BACK BUTTON ########################################################
         BackButton = new Button(SW.loadImage("Images/back.jpg"),SW);
@@ -94,6 +104,10 @@ public class Board {
         }
     }
 
+    public RGB[] getPalette(){
+        return Palette;
+    }
+
     //########################### SLOTS FUNCTIONS #########################################
 
     protected void setupSlots(int[][][] positions,int RX,int RY){
@@ -115,11 +129,6 @@ public class Board {
                 feedback_slots[i][j] = new Slot(SW);
                 feedback_slots[i][j].setPosition(positions[i][j][0],positions[i][j][1]);
                 feedback_slots[i][j].setRadius(RX,RY);
-                //TODO: QUESTO PEZZO DOPO E' POI DA RIMUOVERE
-                feedback_slots[i][j].SlotActivation();
-                feedback_slots[i][j].fillSlot(1);
-                feedback_slots[i][j].setActiveColor(c);
-                feedback_slots[i][j].SlotDeactivation();
             }
         }
     }
@@ -143,6 +152,23 @@ public class Board {
         }
         else{
             throw new RuntimeException("Activated not existing group of slots");
+        }
+    }
+
+    public int[] getSlotsContent(int i){
+        int[] slotscontent = new int[4];
+        for(int j=0;j<slots[i].length;j++){
+            slotscontent[j] = slots[i][j].getContent();
+        }
+        return slotscontent;
+    }
+
+    public void setFeedbackSlots(int[] feedback,int count){
+        for(int j=0;j<feedback_slots[count].length;j++) {
+            feedback_slots[count][j].SlotActivation();
+            feedback_slots[count][j].fillSlot(feedback[j]);
+            feedback_slots[count][j].setActiveColor(feedback_color[feedback[j]]);
+            feedback_slots[count][j].SlotDeactivation();
         }
     }
 
