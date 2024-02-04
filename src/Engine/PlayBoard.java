@@ -41,6 +41,7 @@ public class PlayBoard {
     //########################## PLAYBOARD FUNCTIONS ###############################
 
     public void initializePlayBoard(){
+        System.gc();
         actualgame = new Play();
         actualgame.setDifficulty(myWorkflow.difficulty);
         actualgame.initializeGame();

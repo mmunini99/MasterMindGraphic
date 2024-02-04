@@ -12,10 +12,12 @@ public class StartingClass extends PApplet {
     }
 
     public void settings() {
-        size(1920, 1080);
+        //size(1920, 1080);
+        fullScreen();
     }
 
     public void setup() {
+        frameRate(20);
         main_work_flow = new WorkFlow(this);
         workflow = main_work_flow.getWorkflow();
     }

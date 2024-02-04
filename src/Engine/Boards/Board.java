@@ -63,7 +63,7 @@ public class Board {
         feedback_color[2] = new RGB(0,0,0);
 
         //######################## BACK BUTTON ########################################################
-        BackButton = new Button(SW.loadImage("Images/back.jpg"),SW);
+        BackButton = new Button(SW.loadImage("Images/back.png"),SW);
         BackButton.setPosition(100,50);
         BackButton.setButtonColor(0,0,0);
         BackButton.setSize(100,100);
@@ -182,7 +182,11 @@ public class Board {
             SW.clear();
         }
         RulesButton.showButton();
-        //TODO: rulesbutton interaction
+        if(EM.Button_Pressed(RulesButton,SW)){
+            myWorkflow.getRuleMenus().setFromWhere(myWorkflow.getStep());
+            myWorkflow.GoToStep(6);
+            SW.clear();
+        }
 
         //############################## IMAGES #########################################
 

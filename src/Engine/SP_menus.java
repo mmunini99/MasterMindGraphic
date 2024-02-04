@@ -29,7 +29,7 @@ public class SP_menus {
         MediumButton = new Button("MEDIUM",SW);
         HardButton = new Button("HARD",SW);
         RulesButton = new Button(SW.loadImage("Images/questionmark.png"),SW);
-        BackButton = new Button(SW.loadImage("Images/back.jpg"),SW);
+        BackButton = new Button(SW.loadImage("Images/back.png"),SW);
 
         //EasyButton
 
@@ -94,10 +94,15 @@ public class SP_menus {
         RulesButton.showButton();
         BackButton.showButton();
 
-        //TODO: attiva l'interattività dei bottoni (BACK ✓, EASY ✓, MEDIUM ✓, HARD ✓)
+        //TODO: attiva l'interattività dei bottoni (BACK ✓, EASY ✓, MEDIUM ✓, HARD ✓, RULES ✓)
 
         if(EM.Button_Pressed(BackButton,SW)){
             myWorkflow.previousStep();
+            SW.clear();
+        }
+        if(EM.Button_Pressed(RulesButton,SW)){
+            myWorkflow.getRuleMenus().setFromWhere(myWorkflow.getStep());
+            myWorkflow.GoToStep(6);
             SW.clear();
         }
         if(EM.Button_Pressed(EasyButton,SW)){

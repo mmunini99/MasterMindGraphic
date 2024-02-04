@@ -10,6 +10,7 @@ public class WorkFlow {
     private final Start_Menus start_menus;
     private final SP_menus sp_menus;
 
+    private final RuleMenus rulemenus;
 
     //#################################### TRANSPORT VAR ####################################
     public int difficulty = -1;
@@ -23,6 +24,7 @@ public class WorkFlow {
         sp_menus = new SP_menus(SW,this);
         playboard = new PlayBoard(SW,this);
         endgamemenus = new EndGameMenus(SW,this);
+        rulemenus = new RuleMenus(SW,this);
 
         workflow = new Function[]{
                 start_menus::splashing,
@@ -30,7 +32,8 @@ public class WorkFlow {
                 sp_menus::difficulty_menu,
                 playboard::showPlayBoard,
                 endgamemenus::VictoryMenu,
-                endgamemenus::DefeatMenu
+                endgamemenus::DefeatMenu,
+                rulemenus::showRuleMenus
         };
     }
 
@@ -45,11 +48,11 @@ public class WorkFlow {
     }
 
     public void GoToStep(int s){
-        if(s>=0){
+        if(s>=0 && s<workflow.length){
             step = s;
         }
         else{
-            throw new java.lang.RuntimeException("GoToStep points to a non existent step; s="+s);
+            throw new java.lang.RuntimeException("Workflow: GoToStep points to a non existent step; s="+s);
         }
     }
 
@@ -60,6 +63,8 @@ public class WorkFlow {
     public Function[] getWorkflow(){
         return workflow;
     }
+
+    public RuleMenus getRuleMenus(){ return rulemenus;}
 
 
 }
