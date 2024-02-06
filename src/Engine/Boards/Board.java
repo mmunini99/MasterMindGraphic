@@ -64,14 +64,14 @@ public class Board {
 
         //######################## BACK BUTTON ########################################################
         BackButton = new Button(SW.loadImage("Images/back.png"),SW);
-        BackButton.setPosition(100,50);
+        BackButton.setPosition(Math.round(SW.width*0.04F),SW.height/16);
         BackButton.setButtonColor(0,0,0);
-        BackButton.setSize(100,100);
+        BackButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
         //####################### RULES BUTTON #######################################################
         RulesButton = new Button(SW.loadImage("Images/questionmark.png"),SW);
-        RulesButton.setPosition(SW.width-200,50);
+        RulesButton.setPosition(Math.round(SW.width*0.88F),SW.height/16);
         RulesButton.setButtonColor(0,0,0);
-        RulesButton.setSize(100,100);
+        RulesButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
 
     }
 
@@ -99,7 +99,7 @@ public class Board {
             Button PB = new Button(SW);
             PB.setButtonColor(Palette[i].getR(),Palette[i].getG(),Palette[i].getB());
             PB.setPosition(PalettePositions[i][0],PalettePositions[i][1]);
-            PB.setSize(200,200);
+            PB.setSize(Math.round(SW.width*0.12F),Math.round(SW.height*0.19F));
             PaletteButtons.add(PB);
         }
     }

@@ -4,9 +4,9 @@ public class TemplateMatrix {
 
     private int lengthoftrials;
 
-    private int lengthofguess;
+    private final int lengthofguess;
 
-    private int lengthoffeedback;
+    private final int lengthoffeedback;
 
     private int[] guessofplayer;
 
@@ -29,7 +29,7 @@ public class TemplateMatrix {
     }
 
 
-    private void setguessandfeed(int[] guess, int[] feed, int count) {
+    public void setguessandfeed(int[] guess, int[] feed, int count) {
 
         int[][] matrixold = template;
 
@@ -44,25 +44,25 @@ public class TemplateMatrix {
             }
         }
 
-        this.template = matrixold;
+        template = matrixold;
 
 
     }
 
 
     public TemplateMatrix(int lengthoftrials,
-                          int[] guessofplayer,
-                          int[] feedback) {
+                          int LOG ,
+                          int LOF) {
 
-        this.lengthofguess = getLengthofarray(guessofplayer);
+        lengthofguess = LOG;
 
-        this.lengthoffeedback = getLengthofarray(feedback);
+        lengthoffeedback = LOF;
 
         int nrow = lengthofguess + lengthoffeedback;
 
         int ncolumn = lengthoftrials;
 
-        this.template = new int[ncolumn][nrow];
+        template = new int[ncolumn][nrow];
 
 
     }

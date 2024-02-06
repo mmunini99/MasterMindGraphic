@@ -5,6 +5,7 @@ import Engine.Boards.EasyBoard;
 import Engine.Boards.HardBoard;
 import Engine.Boards.MediumBoard;
 import LetGameRun.Play;
+import Settings.TemplateMatrix;
 import processing.core.PApplet;
 
 public class PlayBoard {
@@ -12,6 +13,7 @@ public class PlayBoard {
     private Play actualgame;
     private final WorkFlow myWorkflow;
     private Board gameboard;
+    private TemplateMatrix mat;
 
     private final Events_Manager EM = new Events_Manager();
 
@@ -30,12 +32,12 @@ public class PlayBoard {
 
         //CHECK BUTTON
         CheckButton = new Button("CHECK",SW);
-        CheckButton.setPosition(SW.width/3,50);
+        CheckButton.setPosition(Math.round(SW.width*0.16F),SW.height/16);
         CheckButton.setButtonColor(0,255,217);
         CheckButton.setTextcolor(0,0,0);
-        CheckButton.setSize(SW.width/3,100);
+        CheckButton.setSize(Math.round(SW.width*0.68F),SW.height/8);
         CheckButton.setTextsizePerc(0.6F);
-        CheckButton.setPaddingsPerc(0.35F,0.15F);
+        CheckButton.setPaddingsPerc(0.375F,0.15F);
     }
 
     //########################## PLAYBOARD FUNCTIONS ###############################
@@ -59,6 +61,9 @@ public class PlayBoard {
                 throw new RuntimeException("Input non definito");
         }
         gameboard.slotGroupActivation(0);
+        mat = new TemplateMatrix(actualgame.getTrials(),
+                actualgame.getSecretCode().length,
+                actualgame.getSecretCode().length);
     }
 
     private void FeedbackCheck(){
@@ -76,7 +81,7 @@ public class PlayBoard {
         }
 
         gameboard.setFeedbackSlots(actualgame.getFeedback(),actualgame.getCount());
-
+        mat.setguessandfeed(playerguess, actualgame.getFeedback(), actualgame.getCount());
     }
 
     private boolean ValidGuess(){
@@ -97,8 +102,10 @@ public class PlayBoard {
     public void showPlayBoard(){
         if(actualgame.getInitialized()){
             SW.background(0);
+
             gameboard.showBoard();
             CheckButton.showButton();
+
             if(EM.Button_Pressed(CheckButton,SW) && ValidGuess()){
                 FeedbackCheck();
                 gameboard.slotGroupDeactivation(actualgame.getCount());
@@ -111,18 +118,20 @@ public class PlayBoard {
                     SW.clear();
                 }
                 //Losing
-                if(actualgame.getCount()>=actualgame.getTrials()-1){
+                if(actualgame.getCount()>actualgame.getTrials()-1){
                     System.out.println("HAI PERSO!!!!");
                     //TODO: ci sarà da aggiungere poi la registrazione dei punteggi e altre cose
                     myWorkflow.endgamemenus.setSecretCode(actualgame.getSecretCode(),gameboard.getPalette());
                     myWorkflow.GoToStep(5);
                     SW.clear();
                 }
-                gameboard.slotGroupActivation(actualgame.getCount());
+                else {
+                    gameboard.slotGroupActivation(actualgame.getCount());
+                }
             }
         }
         else{
-            throw new RuntimeException("Game not inizialized");
+            throw new RuntimeException("Game not initialized");
         }
     }
 

@@ -11,7 +11,9 @@ public class EasyBoard extends Board{
     RGB[] easyPal = new RGB[]{new RGB(0,0,255),new RGB(255,255,0),new RGB(0,255,0)}; //blue,yellow,green
     int easyNOT = 15; //number of trials
 
-    int[][] easyPalPos = new int[][]{{50,SW.height/4},{250,SW.height/4},{450,SW.height/4}};
+    int[][] easyPalPos = new int[][]{{Math.round(SW.width*0.04F),SW.height/4},
+            {Math.round(SW.width*0.16F),SW.height/4},
+            {Math.round(SW.width*0.28F),SW.height/4}};
 
     PImage easyBoardImage = SW.loadImage("Images/easyBoard.png");
 
@@ -23,6 +25,8 @@ public class EasyBoard extends Board{
 
     int[][][] SlotsPositions = new int[15][4][2];
     int[][][] FeedbackSlotsPositions = new int[15][4][2];
+
+    //############################# PRIVATE SETUP FUNCTIONS ##########################################
 
     private void ComputeSlotPositions(){
         int AreaSlotY = 742;
@@ -50,7 +54,7 @@ public class EasyBoard extends Board{
     }
 
     private void calculateImagePadding(){
-        if(SW.width>=SW.height){
+        if(SW.width>=SW.height && easyBoardImage.width<=SW.width){
             float ratio = (float) 1.0*easyBoardImage.width /easyBoardImage.height;
             y1 = SW.height/2;
             ysize = (SW.height/2)- SW.height/20;
@@ -66,6 +70,18 @@ public class EasyBoard extends Board{
         }
     }
 
+    private void ComputeSlotRadius(){
+        SlotRadiusY = Math.round(ysize*1.0F/(2*(SlotsPositions[0].length+1)));
+        SlotRadiusX = SlotRadiusY;
+    }
+
+    private void ComputeFeedbackSlotRadius(){
+        FeedbackSlotRadiusY = Math.round(ysize*1.0F/(2*2*(SlotsPositions[0].length+2)));
+        FeedbackSlotRadiusX = FeedbackSlotRadiusY;
+    }
+
+    //##################################### CONSTRUCTOR #################################################
+
     public EasyBoard(PApplet arg1, WorkFlow WF, PlayBoard arg2) {
         super(arg1,WF,arg2);
         setPalette(easyPal);
@@ -73,7 +89,9 @@ public class EasyBoard extends Board{
         setImageboard(easyBoardImage);
         calculateImagePadding();
         ComputeSlotPositions();
+        ComputeSlotRadius();
         ComputeFeedbackSlotPositions();
+        ComputeFeedbackSlotRadius();
         setPalettePositions(easyPalPos);
 
         setupPaletteButtons();

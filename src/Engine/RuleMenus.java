@@ -16,16 +16,27 @@ public class RuleMenus {
 
     private final Button backbutton;
 
+    //############################# TITLE TEXT ##############################################
+
+    private GameText TitleText;
+
     //############################### CONSTRUCTOR ###########################################################
 
     public RuleMenus(PApplet arg1,WorkFlow arg2){
         SW = arg1;
         myWorkflow = arg2;
 
+        TitleText = new GameText(SW);
+        TitleText.setText("RULES");
+        TitleText.setTextColor(0,255,217);
+        TitleText.setPositions(Math.round(SW.width*0.355F),SW.height/32);
+        TitleText.setSize(Math.round(SW.width*0.34));
+        TitleText.setTextSize(10F);
+
         backbutton = new Button(SW.loadImage("Images/back.png"),SW);
-        backbutton.setPosition(100,50);
+        backbutton.setPosition(Math.round(SW.width*0.04F),SW.height/16);
         backbutton.setButtonColor(0,0,0);
-        backbutton.setSize(100,100);
+        backbutton.setSize(Math.round(SW.width*0.08F),SW.height/8);
     }
 
     //############################## SET FUNCTIONS ################################################
@@ -44,15 +55,7 @@ public class RuleMenus {
     public void showRuleMenus(){
         SW.background(0);
         backbutton.showButton();
-
-        SW.fill(0,255,217);
-        String message = "RULES";
-        SW.textSize(Math.round(0.15*SW.height));
-        SW.text(message,
-                Math.round(SW.width*0.35),
-                Math.round(SW.height/32.0),
-                Math.round(SW.width*0.75),
-                Math.round(SW.height*0.375));
+        TitleText.showText();
 
         //########################### BUTTONS INTERACTION #################################
         if(EM.Button_Pressed(backbutton,SW)){

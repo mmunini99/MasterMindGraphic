@@ -17,7 +17,7 @@ public class StartingClass extends PApplet {
     }
 
     public void setup() {
-        frameRate(20);
+        frameRate(15);
         main_work_flow = new WorkFlow(this);
         workflow = main_work_flow.getWorkflow();
     }

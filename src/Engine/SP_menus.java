@@ -20,6 +20,7 @@ public class SP_menus {
     Button RulesButton;
     Button BackButton;
 
+    GameText QuestionText;
 
 
     public SP_menus(PApplet arg1, WorkFlow arg2){
@@ -30,61 +31,63 @@ public class SP_menus {
         HardButton = new Button("HARD",SW);
         RulesButton = new Button(SW.loadImage("Images/questionmark.png"),SW);
         BackButton = new Button(SW.loadImage("Images/back.png"),SW);
+        QuestionText = new GameText(SW);
 
         //EasyButton
 
-        EasyButton.setPosition(200,3*SW.height/4);
+        EasyButton.setPosition(Math.round(SW.width*0.08F),2*SW.height/3);
         EasyButton.setButtonColor(0,150,0);
         EasyButton.setTextcolor(0,0,0);
-        EasyButton.setSize(400,200);
-        EasyButton.setTextsizePerc(0.25F);
-        EasyButton.setPaddingsPerc(0.35F,0.30F);
+        EasyButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
+        EasyButton.setTextsizePerc(0.35F);
+        EasyButton.setPaddingsPerc(0.26F,0.25F);
 
         //MediumButton
 
-        MediumButton.setPosition((SW.width/2)-200,3*SW.height/4);
+        MediumButton.setPosition(Math.round(SW.width*0.385F),2*SW.height/3);
         MediumButton.setButtonColor(255,255,0);
         MediumButton.setTextcolor(0,0,0);
-        MediumButton.setSize(400,200);
-        MediumButton.setTextsizePerc(0.25F);
-        MediumButton.setPaddingsPerc(0.25F,0.30F);
+        MediumButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
+        MediumButton.setTextsizePerc(0.35F);
+        MediumButton.setPaddingsPerc(0.13F,0.25F);
 
         //HardButton
 
-        HardButton.setPosition(SW.width-600,3*SW.height/4);
+        HardButton.setPosition(Math.round(SW.width*0.69F),2*SW.height/3);
         HardButton.setButtonColor(255,0,0);
         HardButton.setTextcolor(0,0,0);
-        HardButton.setSize(400,200);
-        HardButton.setTextsizePerc(0.25F);
-        HardButton.setPaddingsPerc(0.30F,0.30F);
+        HardButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
+        HardButton.setTextsizePerc(0.35F);
+        HardButton.setPaddingsPerc(0.225F,0.25F);
 
         //RulesButton
 
-        RulesButton.setPosition(SW.width-200,50);
+        RulesButton.setPosition(Math.round(SW.width*0.88F),SW.height/16);
         RulesButton.setButtonColor(0,0,0);
-        RulesButton.setSize(100,100);
+        RulesButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
 
         //BackButton
 
-        BackButton.setPosition(100,50);
+        BackButton.setPosition(Math.round(SW.width*0.04F),SW.height/16);
         BackButton.setButtonColor(0,0,0);
-        BackButton.setSize(100,100);
+        BackButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
+
+        //QuestionText
+
+        QuestionText.setText("Select the difficulty level");
+        QuestionText.setTextColor(0,255,217);
+        QuestionText.setPositions(Math.round(SW.width*0.16),SW.height/16);
+        QuestionText.setSize(Math.round(SW.width*0.68));
+        QuestionText.setTextSize(12F);
 
     }
 
     public void difficulty_menu(){
         SW.background(0);
 
-        //DOMANDA
+        //QUESTIONTEXT
 
-        SW.fill(0,255,217);
-        String title = "Select the difficulty level";
-        SW.textSize(Math.round(0.05*SW.height));
-        SW.text(title,
-                Math.round(SW.width/3.0),
-                Math.round(SW.height/8.0),
-                Math.round(SW.width*0.75),
-                Math.round(SW.height*0.375));
+        QuestionText.showText();
 
         //SHOW DIFFICULTY AND RULES BUTTONS
 

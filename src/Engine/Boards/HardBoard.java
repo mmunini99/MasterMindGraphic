@@ -18,12 +18,12 @@ public class HardBoard extends Board{
 
     int hardNOT = 7; //number of trials
 
-    int[][] hardPalPos = new int[][]{{50,SW.height/4},
-            {250,SW.height/4},
-            {450,SW.height/4},
-            {650,SW.height/4},
-            {850, SW.height/4},
-            {1050, SW.height/4}
+    int[][] hardPalPos = new int[][]{{Math.round(SW.width*0.04F),SW.height/4},
+            {Math.round(SW.width*0.16F),SW.height/4},
+            {Math.round(SW.width*0.28F),SW.height/4},
+            {Math.round(SW.width*0.40F),SW.height/4},
+            {Math.round(SW.width*0.52F), SW.height/4},
+            {Math.round(SW.width*0.64F), SW.height/4}
     };
 
     PImage hardBoardImage = SW.loadImage("Images/hardboard.png");
@@ -36,6 +36,8 @@ public class HardBoard extends Board{
 
     int[][][] SlotsPositions = new int[7][4][2];
     int[][][] FeedbackSlotsPositions = new int[7][4][2];
+
+    //##################################### PRIVATE SETUP FUNCTIONS ######################################
 
     private void ComputeSlotPositions(){
         int AreaSlotY = 742;
@@ -79,6 +81,18 @@ public class HardBoard extends Board{
         }
     }
 
+    private void ComputeSlotRadius(){
+        SlotRadiusY = Math.round(ysize*1.0F/(2*(SlotsPositions[0].length+1)));
+        SlotRadiusX = SlotRadiusY;
+    }
+
+    private void ComputeFeedbackSlotRadius(){
+        FeedbackSlotRadiusY = Math.round(ysize*1.0F/(2*2*(SlotsPositions[0].length+2)));
+        FeedbackSlotRadiusX = FeedbackSlotRadiusY;
+    }
+
+    //########################### CONSTRUCTOR ###############################################
+
     public HardBoard(PApplet sw, WorkFlow wf, PlayBoard pb) {
         super(sw,wf,pb);
         setPalette(hardPal);
@@ -86,7 +100,9 @@ public class HardBoard extends Board{
         setImageboard(hardBoardImage);
         calculateImagePadding();
         ComputeSlotPositions();
+        ComputeSlotRadius();
         ComputeFeedbackSlotPositions();
+        ComputeFeedbackSlotRadius();
         setPalettePositions(hardPalPos);
 
         setupPaletteButtons();
