@@ -21,6 +21,13 @@ public class EndGameMenus {
     Button MainMenuButton;
     Button ExitButton;
 
+    //############################ TEXTS #########################################
+
+    GameText WinText;
+
+    GameText LoseUpperText;
+    GameText LoseLowerText;
+
     //############################ IMAGES #############################################
 
     PImage CodeDisplay;
@@ -33,28 +40,53 @@ public class EndGameMenus {
 
         CodeDisplay = SW.loadImage("Images/codedisplay.png");
 
-        //###################### INITIALIZE BUTTONS #####################################
+        //###################### INITIALIZE BUTTONS AND TEXTS #################################
 
         MainMenuButton = new Button("MAIN MENU",SW);
         ExitButton = new Button("EXIT GAME", SW);
+        WinText = new GameText(SW);
+        LoseUpperText = new GameText(SW);
+        LoseLowerText = new GameText(SW);
 
         //#################### MAIN MENU BUTTON ###############################
 
-        MainMenuButton.setPosition(200,3*SW.height/4);
+        MainMenuButton.setPosition(Math.round(SW.width*0.08F),2*SW.height/3);
         MainMenuButton.setButtonColor(0,255,217);
         MainMenuButton.setTextcolor(150,0,150);
-        MainMenuButton.setSize(400,200);
-        MainMenuButton.setTextsizePerc(0.25F);
-        MainMenuButton.setPaddingsPerc(0.15F,0.3F);
+        MainMenuButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
+        MainMenuButton.setTextsizePerc(0.225F);
+        MainMenuButton.setPaddingsPerc(0.135F,0.33F);
 
         //####################### EXIT BUTTON #########################################
 
-        ExitButton.setPosition(SW.width-600,3*SW.height/4);
+        ExitButton.setPosition(Math.round(SW.width*0.695F),2*SW.height/3);
         ExitButton.setButtonColor(0,255,217);
         ExitButton.setTextcolor(150,0,150);
-        ExitButton.setSize(400,200);
-        ExitButton.setTextsizePerc(0.25F);
-        ExitButton.setPaddingsPerc(0.175F,0.3F);
+        ExitButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
+        ExitButton.setTextsizePerc(0.225F);
+        ExitButton.setPaddingsPerc(0.15F,0.33F);
+
+        //####################### WIN TEXT ###############################################
+
+        WinText.setText("YOU WIN!");
+        WinText.setPositions(Math.round(SW.width*0.2),SW.height/8);
+        WinText.setTextColor(0,255,217);
+        WinText.setSize(Math.round(SW.width*0.6F));
+        WinText.setTextSize(11.8F);
+
+        //######################### LOSE TEXTS ##########################################
+
+        LoseUpperText.setText("GAMEOVER");
+        LoseUpperText.setPositions(Math.round(SW.width*0.2),SW.height/24);
+        LoseUpperText.setTextColor(0,255,217);
+        LoseUpperText.setSize(Math.round(SW.width*0.6F));
+        LoseUpperText.setTextSize(11.8F);
+
+        LoseLowerText.setText("The secret code was:");
+        LoseLowerText.setPositions(Math.round(SW.width*0.3),Math.round(SW.height*0.3F));
+        LoseLowerText.setTextColor(0,255,217);
+        LoseLowerText.setSize(Math.round(SW.width*0.4F));
+        LoseLowerText.setTextSize(11.8F);
 
     }
 
@@ -63,9 +95,10 @@ public class EndGameMenus {
     private void prepareSlots(){
         for(int i=0;i<secretcode.length;i++){
             codeSlots[i] = new Slot(SW);
-            codeSlots[i].setPosition(Math.round(SW.width/3.0F+(i+0.5F)*SW.width/12.0F),
-                    Math.round(SW.height/2.0F+CodeDisplay.height*SW.width/(6.0F*CodeDisplay.width)));
-            codeSlots[i].setRadius(Math.round(SW.width/24.0F),Math.round(SW.width/24.0F));
+            codeSlots[i].setPosition(Math.round(0.305F*SW.width+(i+0.5F)*SW.width*0.0975F),
+                    Math.round(2*SW.height/5.0F+CodeDisplay.height*0.195F*SW.width/CodeDisplay.width));
+            codeSlots[i].setRadius(Math.round(CodeDisplay.height*0.39F*0.5F*SW.width/CodeDisplay.width),
+                    Math.round(CodeDisplay.height*0.39F*0.5F*SW.width/CodeDisplay.width));
             codeSlots[i].SlotActivation();
             codeSlots[i].fillSlot(secretcode[i]);
             codeSlots[i].setActiveColor(Palette[secretcode[i]]);
@@ -107,18 +140,7 @@ public class EndGameMenus {
 
     public void VictoryMenu(){
         CommonShow();
-
-        //########################## VICTORY TEXT #############################
-
-        SW.fill(0,255,217);
-        String message = "YOU WIN!";
-        SW.textSize(Math.round(0.15*SW.height));
-        SW.text(message,
-                Math.round(SW.width*0.3),
-                Math.round(SW.height/8.0),
-                Math.round(SW.width*0.75),
-                Math.round(SW.height*0.375));
-
+        WinText.showText();
     }
 
     //############################## DEFEAT MENU ########################################
@@ -134,24 +156,14 @@ public class EndGameMenus {
 
         //########################## DEFEAT TEXT #############################
 
-        SW.fill(0,255,217);
-        String message = "YOU LOSE!";
-        SW.textSize(Math.round(0.15*SW.height));
-        SW.text(message,
-                Math.round(SW.width*0.3),
-                Math.round(0),
-                Math.round(SW.width*0.75),
-                Math.round(SW.height*0.375));
+        LoseUpperText.showText();
 
-        String message2 = "The secret code was:";
-        SW.textSize(Math.round(0.075*SW.height));
-        SW.text(message2,
-                Math.round(SW.width*0.3),
-                Math.round(0.25*SW.height),
-                Math.round(SW.width*0.75),
-                Math.round(SW.height*0.375));
+        LoseLowerText.showText();
 
-        SW.image(CodeDisplay,SW.width/3,SW.height/2,SW.width/3,CodeDisplay.height*SW.width/(3.0F*CodeDisplay.width));
+        SW.image(CodeDisplay,Math.round(0.305F*SW.width),
+                2*SW.height/5,
+                0.39F*SW.width,
+                CodeDisplay.height*0.39F*SW.width/CodeDisplay.width);
 
         for(int i=0;i<codeSlots.length;i++){
             codeSlots[i].showSlot();

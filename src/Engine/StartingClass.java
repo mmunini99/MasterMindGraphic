@@ -4,8 +4,8 @@ import processing.core.*;
 
 public class StartingClass extends PApplet {
 
-    WorkFlow main_work_flow;
-    Function[] workflow;
+    private WorkFlow main_work_flow;
+    private Function[] workflow;
 
     public static void main(String args[]) {
         PApplet.main("Engine.StartingClass");
