@@ -12,7 +12,7 @@ public class StartingClass extends PApplet {
     }
 
     public void settings() {
-        //size(1920, 1080);
+        //size(2560, 1080);
         fullScreen();
     }
 
