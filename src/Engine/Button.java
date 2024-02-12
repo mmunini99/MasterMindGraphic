@@ -129,13 +129,13 @@ public class Button {
 
     public void setPaddingsPerc(float a,float b){
         if(Math.abs(a)<=1 && Math.abs(b)<=1){
-            x_padding = Math.round(a*xsize);
-            y_padding = Math.round(b*ysize);
+                x_padding = Math.round(a*xsize);
+                y_padding = Math.round(b*ysize);
+            }
+            else{
+                throw new RuntimeException("Button: impossible padding percentage");
+            }
         }
-        else{
-            throw new RuntimeException("Percentuale del padding insensata");
-        }
-    }
 
     //################# HOOVERING AND ON THE BUTTON ##################################
 
@@ -164,7 +164,7 @@ public class Button {
         if(textButton){
             SW.fill(textcolor.getR(),textcolor.getG(),textcolor.getB());
             SW.textSize(textsize);
-            SW.text(ButtonText,x+x_padding,y+y_padding,x+xsize+x_padding,y+ysize+y_padding);
+            SW.text(ButtonText,x+x_padding,y+y_padding,x+xsize,y+ysize);
         }
 
         if(imageButton){

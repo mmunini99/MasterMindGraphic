@@ -33,6 +33,14 @@ public class SP_menus {
         BackButton = new Button(SW.loadImage("Images/back.png"),SW);
         QuestionText = new GameText(SW);
 
+        //QuestionText
+
+        QuestionText.setText("Select the difficulty level");
+        QuestionText.setTextColor(0,255,217);
+        QuestionText.setPositions(Math.round(SW.width*0.16),SW.height/16);
+        QuestionText.setSize(Math.round(SW.width*0.68));
+        QuestionText.setTextSize(12F);
+
         //EasyButton
 
         EasyButton.setPosition(Math.round(SW.width*0.08F),2*SW.height/3);
@@ -71,14 +79,6 @@ public class SP_menus {
         BackButton.setPosition(Math.round(SW.width*0.04F),SW.height/16);
         BackButton.setButtonColor(0,0,0);
         BackButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
-
-        //QuestionText
-
-        QuestionText.setText("Select the difficulty level");
-        QuestionText.setTextColor(0,255,217);
-        QuestionText.setPositions(Math.round(SW.width*0.16),SW.height/16);
-        QuestionText.setSize(Math.round(SW.width*0.68));
-        QuestionText.setTextSize(12F);
 
     }
 
