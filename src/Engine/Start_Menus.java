@@ -106,6 +106,11 @@ public class Start_Menus {
             myWorkFlow.nextStep();
             SW.clear();
         }
+        if(EM.Button_Pressed(MP_Button,SW)){
+            myWorkFlow.GoToStep(7);
+            SW.clear();
+        }
+
     }
 
     private void end_program(){

@@ -1,6 +1,6 @@
 package Engine.Boards;
 
-import Engine.PlayBoard;
+import Engine.Playboards.GenericPlayBoard;
 import Engine.RGB;
 import Engine.WorkFlow;
 import processing.core.PApplet;
@@ -92,7 +92,7 @@ public class MediumBoard extends Board{
 
     //############################## CONSTRUCTOR ##############################################
 
-    public MediumBoard(PApplet sw, WorkFlow wf, PlayBoard pb) {
+    public MediumBoard(PApplet sw, WorkFlow wf, GenericPlayBoard pb) {
         super(sw, wf, pb);
         setPalette(medPal);
         setNumberOfTrials(medNOT);

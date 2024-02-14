@@ -1,6 +1,6 @@
 package Engine.Boards;
 
-import Engine.PlayBoard;
+import Engine.Playboards.GenericPlayBoard;
 import Engine.RGB;
 import Engine.WorkFlow;
 import processing.core.PApplet;
@@ -93,7 +93,7 @@ public class HardBoard extends Board{
 
     //########################### CONSTRUCTOR ###############################################
 
-    public HardBoard(PApplet sw, WorkFlow wf, PlayBoard pb) {
+    public HardBoard(PApplet sw, WorkFlow wf, GenericPlayBoard pb) {
         super(sw,wf,pb);
         setPalette(hardPal);
         setNumberOfTrials(hardNOT);

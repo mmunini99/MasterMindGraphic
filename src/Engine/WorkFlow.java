@@ -1,5 +1,7 @@
 package Engine;
 
+import Engine.Playboards.MultiPlayBoard;
+import Engine.Playboards.PlayBoard;
 import processing.core.PApplet;
 
 public class WorkFlow {
@@ -10,6 +12,8 @@ public class WorkFlow {
     private final Start_Menus start_menus;
     private final SP_menus sp_menus;
 
+    private final MultiStartMenus mp_menus;
+
     private final RuleMenus rulemenus;
 
     //#################################### TRANSPORT VAR ####################################
@@ -17,6 +21,7 @@ public class WorkFlow {
 
 
     protected PlayBoard playboard;
+    protected MultiPlayBoard mp_playboard;
     protected final EndGameMenus endgamemenus;
 
     public WorkFlow(PApplet SW){
@@ -25,6 +30,8 @@ public class WorkFlow {
         playboard = new PlayBoard(SW,this);
         endgamemenus = new EndGameMenus(SW,this);
         rulemenus = new RuleMenus(SW,this);
+        mp_menus = new MultiStartMenus(SW,this);
+        mp_playboard = new MultiPlayBoard(SW,this);
 
         workflow = new Function[]{
                 start_menus::splashing,
@@ -33,8 +40,19 @@ public class WorkFlow {
                 playboard::showPlayBoard,
                 endgamemenus::VictoryMenu,
                 endgamemenus::DefeatMenu,
-                rulemenus::showRuleMenus
+                rulemenus::showRuleMenus,
+                mp_menus::MultiIntroMenu,
+                mp_menus::mp_difficulty_menu,
+                mp_playboard::showPlayBoard,
+                endgamemenus::MPVictoryMenu,
+                endgamemenus::MPDrawMenu
         };
+    }
+
+    //######################### GET FUNCTIONS #################################
+
+    public EndGameMenus getEndgamemenus(){
+        return endgamemenus;
     }
 
     // ####################### FUNCTIONS FOR STEP #####################################

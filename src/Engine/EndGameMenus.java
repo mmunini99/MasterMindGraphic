@@ -16,6 +16,8 @@ public class EndGameMenus {
 
     private Slot[] codeSlots = new Slot[4];
 
+    private boolean winner = true;
+
     //############################## BUTTONS ############################################
 
     Button MainMenuButton;
@@ -24,9 +26,13 @@ public class EndGameMenus {
     //############################ TEXTS #########################################
 
     GameText WinText;
+    GameText Player1WinText;
+    GameText Player2WinText;
 
     GameText LoseUpperText;
     GameText LoseLowerText;
+    GameText DrawUpperText;
+    GameText DrawLowerText;
 
     //############################ IMAGES #############################################
 
@@ -47,6 +53,10 @@ public class EndGameMenus {
         WinText = new GameText(SW);
         LoseUpperText = new GameText(SW);
         LoseLowerText = new GameText(SW);
+        Player1WinText = new GameText(SW);
+        Player2WinText = new GameText(SW);
+        DrawUpperText = new GameText(SW);
+        DrawLowerText = new GameText(SW);
 
         //#################### MAIN MENU BUTTON ###############################
 
@@ -88,6 +98,34 @@ public class EndGameMenus {
         LoseLowerText.setSize(Math.round(SW.width*0.4F));
         LoseLowerText.setTextSize(11.8F);
 
+        //############################# PLAYERS WIN TEXT ###############################
+
+        Player1WinText.setText("PLAYER 1 WINS!");
+        Player1WinText.setPositions(Math.round(SW.width*0.2),SW.height/8);
+        Player1WinText.setTextColor(0,255,217);
+        Player1WinText.setSize(Math.round(SW.width*0.6F));
+        Player1WinText.setTextSize(12F);
+
+        Player2WinText.setText("PLAYER 2 WINS!");
+        Player2WinText.setPositions(Math.round(SW.width*0.2),SW.height/8);
+        Player2WinText.setTextColor(0,255,217);
+        Player2WinText.setSize(Math.round(SW.width*0.6F));
+        Player2WinText.setTextSize(12F);
+
+        //######################### Draw TEXTS ##########################################
+
+        DrawUpperText.setText("DRAW!");
+        DrawUpperText.setPositions(Math.round(SW.width*0.275),SW.height/24);
+        DrawUpperText.setTextColor(0,255,217);
+        DrawUpperText.setSize(Math.round(SW.width*0.6F));
+        DrawUpperText.setTextSize(9F);
+
+        DrawLowerText.setText("The secret code was:");
+        DrawLowerText.setPositions(Math.round(SW.width*0.3),Math.round(SW.height*0.3F));
+        DrawLowerText.setTextColor(0,255,217);
+        DrawLowerText.setSize(Math.round(SW.width*0.4F));
+        DrawLowerText.setTextSize(11.8F);
+
     }
 
     //########################### OTHER FUNCTIONS #######################################
@@ -119,6 +157,10 @@ public class EndGameMenus {
         }
     }
 
+    public void setWinner(boolean w){
+        winner = w;
+    }
+
     //######################### COMMON SHOW ###################################
 
     private void CommonShow(){
@@ -141,6 +183,16 @@ public class EndGameMenus {
     public void VictoryMenu(){
         CommonShow();
         WinText.showText();
+    }
+
+    public void MPVictoryMenu(){
+        CommonShow();
+        if(winner){
+            Player1WinText.showText();
+        }
+        else{
+            Player2WinText.showText();
+        }
     }
 
     //############################## DEFEAT MENU ########################################
@@ -169,6 +221,33 @@ public class EndGameMenus {
             codeSlots[i].showSlot();
         }
 
+    }
+
+    //######################## MP DRAW MENU ############################################
+
+    public void MPDrawMenu(){
+        CommonShow();
+
+        //########################### SECRET CODE CHECK #######################
+
+        if(secretcode==null){
+            throw new RuntimeException("No secret code given to the End Menu");
+        }
+
+        //########################## DRAW TEXT #############################
+
+        DrawUpperText.showText();
+
+        DrawLowerText.showText();
+
+        SW.image(CodeDisplay,Math.round(0.305F*SW.width),
+                2*SW.height/5,
+                0.39F*SW.width,
+                CodeDisplay.height*0.39F*SW.width/CodeDisplay.width);
+
+        for(int i=0;i<codeSlots.length;i++){
+            codeSlots[i].showSlot();
+        }
     }
 
 }

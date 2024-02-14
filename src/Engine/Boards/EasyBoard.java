@@ -1,6 +1,6 @@
 package Engine.Boards;
 
-import Engine.PlayBoard;
+import Engine.Playboards.GenericPlayBoard;
 import Engine.RGB;
 import Engine.WorkFlow;
 import processing.core.PApplet;
@@ -82,7 +82,7 @@ public class EasyBoard extends Board{
 
     //##################################### CONSTRUCTOR #################################################
 
-    public EasyBoard(PApplet arg1, WorkFlow WF, PlayBoard arg2) {
+    public EasyBoard(PApplet arg1, WorkFlow WF, GenericPlayBoard arg2) {
         super(arg1,WF,arg2);
         setPalette(easyPal);
         setNumberOfTrials(easyNOT);

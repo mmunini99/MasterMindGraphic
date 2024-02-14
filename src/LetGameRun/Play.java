@@ -15,7 +15,7 @@ public class Play {
     private int trials;
     private int lengthoftemplate;
 
-    private static int[] secretCode;
+    private int[] secretCode;
     private int[] feedback;
 
     private int count;
@@ -99,6 +99,22 @@ public class Play {
         }
         //TODO: FINO A QUI!
         initializedGame = true;
+    }
+
+    public void setSecretCode(int[] newcode){
+        if(newcode.length==lengthofseq){
+            for(int i=0;i<lengthofseq;i++){
+                if((newcode[i]>=0)&&(newcode[i]<lengthoftemplate)){
+                    secretCode[i]=newcode[i];
+                }
+                else{
+                    throw new RuntimeException("Play: invalid number in given new secret code");
+                }
+            }
+        }
+        else{
+            throw new RuntimeException("Play: given new secret code is too long");
+        }
     }
 
     //####################### GAME FUNCTIONS ###########################################

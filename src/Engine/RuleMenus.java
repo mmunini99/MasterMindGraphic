@@ -54,9 +54,9 @@ public class RuleMenus {
     public void setFromWhere(int s){
         if(s>=0 && s<myWorkflow.getWorkflow().length){
             FromWhere = s;
-            if(s == 2){
+            if(s == 2 || s==8){
                 RulesToLoad = 0;
-            } else if (s == 3) {
+            } else if (s == 3 || s==9) {
                 RulesToLoad = 1;
             }
             else{

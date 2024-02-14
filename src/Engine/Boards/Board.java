@@ -1,6 +1,7 @@
 package Engine.Boards;
 
 import Engine.*;
+import Engine.Playboards.GenericPlayBoard;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -14,7 +15,7 @@ public class Board {
     private WorkFlow myWorkflow;
     private Events_Manager EM = new Events_Manager();
 
-    private PlayBoard PB;
+    private GenericPlayBoard PB;
 
     //######################## COLOR PALETTE ##################################################
     // ASSIGNED IN THE SUBCLASS CONSTRUCTOR
@@ -47,7 +48,7 @@ public class Board {
 
     //##################### CONSTRUCTOR ######################################################
 
-    public Board(PApplet arg1,WorkFlow WF,PlayBoard arg2){
+    public Board(PApplet arg1,WorkFlow WF,GenericPlayBoard arg2){
         //Clean the memory of the previous boards and games
         System.gc();
 
