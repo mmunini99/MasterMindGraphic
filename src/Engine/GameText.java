@@ -1,8 +1,7 @@
 package Engine;
 
+import Engine.GraphicElements.RGB;
 import processing.core.PApplet;
-import processing.core.PConstants;
-import processing.core.PFont;
 
 public class GameText {
 

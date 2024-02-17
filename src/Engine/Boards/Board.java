@@ -1,6 +1,9 @@
 package Engine.Boards;
 
 import Engine.*;
+import Engine.GraphicElements.Button;
+import Engine.GraphicElements.RGB;
+import Engine.GraphicElements.Slot;
 import Engine.Playboards.GenericPlayBoard;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -69,7 +72,7 @@ public class Board {
         BackButton.setButtonColor(0,0,0);
         BackButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
         //####################### RULES BUTTON #######################################################
-        RulesButton = new Button(SW.loadImage("Images/questionmark.png"),SW);
+        RulesButton = new Button(SW.loadImage("question_mark.png"),SW);
         RulesButton.setPosition(Math.round(SW.width*0.88F),SW.height/16);
         RulesButton.setButtonColor(0,0,0);
         RulesButton.setSize(Math.round(SW.width*0.08F),SW.height/8);
@@ -168,7 +171,7 @@ public class Board {
         for(int j=0;j<feedback_slots[count].length;j++) {
             feedback_slots[count][j].SlotActivation();
             feedback_slots[count][j].fillSlot(feedback[j]);
-            feedback_slots[count][j].setActiveColor(feedback_color[feedback[j]]);
+            feedback_slots[count][j].setFillColor(feedback_color[feedback[j]]);
             feedback_slots[count][j].SlotDeactivation();
         }
     }
@@ -208,7 +211,7 @@ public class Board {
                 if (EM.SlotPressed(slots[i][j], SW) && slots[i][j].isActiveSlot()) {
                     if (slots[i][j].isSlotEmpty() && PB.getSelectedColor() >= 0) {
                         slots[i][j].fillSlot(PB.getSelectedColor());
-                        slots[i][j].setActiveColor(Palette[PB.getSelectedColor()]);
+                        slots[i][j].setFillColor(Palette[PB.getSelectedColor()]);
                     } else {
                             slots[i][j].emptySlot();
                     }

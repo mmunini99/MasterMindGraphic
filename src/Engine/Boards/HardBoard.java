@@ -1,7 +1,7 @@
 package Engine.Boards;
 
 import Engine.Playboards.GenericPlayBoard;
-import Engine.RGB;
+import Engine.GraphicElements.RGB;
 import Engine.WorkFlow;
 import processing.core.PApplet;
 import processing.core.PImage;

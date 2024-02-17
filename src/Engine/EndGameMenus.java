@@ -1,5 +1,8 @@
 package Engine;
 
+import Engine.GraphicElements.Button;
+import Engine.GraphicElements.RGB;
+import Engine.GraphicElements.Slot;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -139,7 +142,7 @@ public class EndGameMenus {
                     Math.round(CodeDisplay.height*0.39F*0.5F*SW.width/CodeDisplay.width));
             codeSlots[i].SlotActivation();
             codeSlots[i].fillSlot(secretcode[i]);
-            codeSlots[i].setActiveColor(Palette[secretcode[i]]);
+            codeSlots[i].setFillColor(Palette[secretcode[i]]);
             codeSlots[i].SlotDeactivation();
         }
     }

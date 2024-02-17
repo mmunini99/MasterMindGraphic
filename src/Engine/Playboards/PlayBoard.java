@@ -4,7 +4,7 @@ import Engine.Boards.Board;
 import Engine.Boards.EasyBoard;
 import Engine.Boards.HardBoard;
 import Engine.Boards.MediumBoard;
-import Engine.Button;
+import Engine.GraphicElements.Button;
 import Engine.Events_Manager;
 import Engine.WorkFlow;
 import LetGameRun.Play;
@@ -48,7 +48,7 @@ public class PlayBoard extends GenericPlayBoard {
     public void initializePlayBoard(){
         System.gc();
         actualgame = new Play();
-        actualgame.setDifficulty(myWorkflow.difficulty);
+        actualgame.setDifficulty(myWorkflow.getDifficulty());
         actualgame.initializeGame();
         switch (actualgame.getInput()){
             case "EASY":

@@ -1,5 +1,7 @@
 package Engine;
 
+import Engine.GraphicElements.Button;
+import Engine.GraphicElements.Slot;
 import processing.core.PApplet;
 
 public class Events_Manager {
@@ -48,7 +50,7 @@ public class Events_Manager {
 
     //###################### SLOT EVENT #########################################
 
-    public boolean SlotPressed(Slot S,PApplet SW){
+    public boolean SlotPressed(Slot S, PApplet SW){
         if(S.on_the_slot() && SW.mousePressed){
             SW.mousePressed = false;
             return true;

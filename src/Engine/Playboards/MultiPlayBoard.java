@@ -4,7 +4,7 @@ import Engine.Boards.Board;
 import Engine.Boards.EasyBoard;
 import Engine.Boards.HardBoard;
 import Engine.Boards.MediumBoard;
-import Engine.Button;
+import Engine.GraphicElements.Button;
 import Engine.Events_Manager;
 import Engine.GameText;
 import Engine.WorkFlow;
@@ -67,10 +67,10 @@ public class MultiPlayBoard extends GenericPlayBoard{
     public void initializePlayBoard(){
         System.gc();
         actualgame1 = new Play();
-        actualgame1.setDifficulty(myWorkflow.difficulty);
+        actualgame1.setDifficulty(myWorkflow.getDifficulty());
         actualgame1.initializeGame();
         actualgame2 = new Play();
-        actualgame2.setDifficulty(myWorkflow.difficulty);
+        actualgame2.setDifficulty(myWorkflow.getDifficulty());
         actualgame2.initializeGame();
         System.out.println(actualgame1.getSecretCode()[0]+" "+actualgame1.getSecretCode()[1]+" "+actualgame1.getSecretCode()[2]+" "+actualgame1.getSecretCode()[3]+" ");
         actualgame2.setSecretCode(actualgame1.getSecretCode());
