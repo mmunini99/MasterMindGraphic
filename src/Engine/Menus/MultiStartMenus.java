@@ -1,7 +1,7 @@
 package Engine.Menus;
 
 import Engine.Events_Manager;
-import Engine.GameText;
+import Engine.GraphicElements.GameText;
 import Engine.GraphicElements.Button;
 import Engine.WorkFlow;
 import processing.core.PApplet;

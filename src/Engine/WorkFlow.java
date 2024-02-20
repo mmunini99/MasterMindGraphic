@@ -1,11 +1,8 @@
 package Engine;
 
-import Engine.Menus.MultiStartMenus;
-import Engine.Menus.RuleMenus;
-import Engine.Menus.SP_menus;
-import Engine.Menus.Start_Menus;
+import Engine.Menus.*;
 import Engine.Playboards.MultiPlayBoard;
-import Engine.Playboards.PlayBoard;
+import Engine.Playboards.SinglePlayBoard;
 import processing.core.PApplet;
 
 //############################### CLASS DESCRIPTION #############################################################
@@ -36,7 +33,7 @@ public class WorkFlow {
     @SuppressWarnings("FieldCanBeLocal")
     private final MultiStartMenus mp_menus; //Multiplayer menus
     private final RuleMenus rulemenus; //Rules menus
-    private final PlayBoard playboard; //Single-player playboard
+    private final SinglePlayBoard playboard; //Single-player playboard
     private final MultiPlayBoard mp_playboard; //Multiplayer playboard
     private final EndGameMenus endgamemenus; //End Game menus
 
@@ -49,7 +46,7 @@ public class WorkFlow {
         //Initialize all menus instances
         start_menus = new Start_Menus(SW,this);
         sp_menus = new SP_menus(SW,this);
-        playboard = new PlayBoard(SW,this);
+        playboard = new SinglePlayBoard(SW,this);
         endgamemenus = new EndGameMenus(SW,this);
         rulemenus = new RuleMenus(SW,this);
         mp_menus = new MultiStartMenus(SW,this);
@@ -79,7 +76,7 @@ public class WorkFlow {
 
     public int getDifficulty(){return difficulty;}
 
-    public PlayBoard getPlayboard() {return playboard;}
+    public SinglePlayBoard getPlayboard() {return playboard;}
 
     public MultiPlayBoard getMp_playboard(){return mp_playboard;}
 

@@ -2,7 +2,7 @@ package Engine.Menus;
 
 import Engine.GraphicElements.Button;
 import Engine.Events_Manager;
-import Engine.GameText;
+import Engine.GraphicElements.GameText;
 import Engine.WorkFlow;
 import processing.core.PApplet;
 
@@ -23,7 +23,6 @@ public class SP_menus {
 
     //Event Manger, needed to manage the Button events
     private final Events_Manager EM = new Events_Manager();
-
 
     //Used to refer to the workflow
     private final WorkFlow myWorkflow;
