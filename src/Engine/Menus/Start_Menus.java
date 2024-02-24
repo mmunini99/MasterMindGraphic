@@ -29,7 +29,8 @@ public class Start_Menus {
 
     //############################ IMAGE VARS #################################################
     //Vars to contains images rendered by the engine in the screens of this menu
-    private final PImage splash_art;
+    private final PImage splash_art; //splash image
+    private final PImage credits; //image of the credits
 
     //############################# BUTTON VARS #################################################
     //This sections contains the instances of all the buttons inside the main menu
@@ -38,11 +39,13 @@ public class Start_Menus {
     private final Button MP_Button; //Button for the Multiplayer mode
     private final Button Exit_Button; //Button to exit from the game
     private final Button Credits_Button; //Button to show the credits
+    private final Button Back_Button; //Used in credits to go back to main menu
 
     //########################## TEXT VARS #################################################
     //Vars to contains texts rendered by the engine in the screens of this menu
 
     private final GameText TitleScreen; //Text of the title of the game
+    private final GameText CreditsTextTitle; //The title of the credits screen
 
     //################################# CLASS CONSTRUCTOR #############################################
     public Start_Menus(PApplet arg1, WorkFlow arg2){
@@ -52,6 +55,7 @@ public class Start_Menus {
 
         //Load image from game files for the splash screen
         splash_art = SW.loadImage("Images/splash.png");
+        credits = SW.loadImage("Images/credits.png");
 
         //Title GameText characteristics setup
         TitleScreen = new GameText(SW);
@@ -60,6 +64,14 @@ public class Start_Menus {
         TitleScreen.setPositions(Math.round(SW.width*0.2), Math.round(SW.height/8.0));
         TitleScreen.setSize(Math.round(SW.width*0.6));
         TitleScreen.setTextSize(12F);
+
+        //Title of the credits screen ("CREDITS") characteristics setup
+        CreditsTextTitle = new GameText(SW);
+        CreditsTextTitle.setText("CREDITS");
+        CreditsTextTitle.setTextColor(0,255,217);
+        CreditsTextTitle.setPositions(Math.round(SW.width*0.285F),SW.height/32);
+        CreditsTextTitle.setSize(Math.round(SW.width*0.5F));
+        CreditsTextTitle.setTextSize(10F);
 
         //Single-player button setup
         SP_Button = new Button("SINGLE-PLAYER",SW);
@@ -96,6 +108,12 @@ public class Start_Menus {
         Credits_Button.setSize(Math.round(SW.width*0.23F),Math.round(SW.height*0.16F));
         Credits_Button.setTextsizePerc(0.25F);
         Credits_Button.setPaddingsPerc(0.275F,0.30F);
+
+        //Back button setup
+        Back_Button = new Button(SW.loadImage("Images/back.png"),SW);
+        Back_Button.setPosition(Math.round(SW.width*0.04F),SW.height/16);
+        Back_Button.setButtonColor(0,0,0);
+        Back_Button.setSize(Math.round(SW.width*0.08F),SW.height/8);
     }
 
     //################################### SHOW FUNCTIONS ####################################################
@@ -158,8 +176,23 @@ public class Start_Menus {
 
     //Credits show function
     public void Credits_menu(){
-        SW.background(0);
-        //TODO: fare i crediti del gioco, i nostri nomi più le licenze
+        SW.background(0);  //set the background color (0=BLACK)
+
+        //Show the image containing the credits
+        SW.image(credits,Math.round(SW.width*0.04F),Math.round(SW.height*0.29F),Math.round(SW.width*0.92F),Math.round(SW.height*0.66F));
+
+        //Show back button
+        Back_Button.showButton();
+
+        //Show screen title
+        CreditsTextTitle.showText();
+
+        //Back button -> Go back to main menu
+        if(EM.Button_Pressed(Back_Button,SW)){
+            myWorkFlow.GoToStep(1);
+            SW.clear();
+        }
     }
+
 
 }
