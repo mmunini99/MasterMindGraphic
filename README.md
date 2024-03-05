@@ -29,7 +29,7 @@ This Mastermind videogame is a digital porting of the traditional Mastermind gam
 
 Talking about our digital porting, running the game, after a small splashscreen, you will arrive to the Main Menu:
 
-![App Screenshot](https://imgur.com/a/0jXWyyt)
+![App Screenshot](https://github.com/mmunini99/MasterMindGraphic/blob/main/readme_images/mainmenu.PNG)
 
 From here you will able to
 
