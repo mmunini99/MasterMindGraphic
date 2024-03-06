@@ -9,9 +9,9 @@ This repository contains the graphic version of Mastermind. The game is implemen
 
 ## Usage
 
-To play Mastermind on your device a Java distribution it's firstly required. Personally, we suggest as distribution the [Semeru 1.8.0_402](https://developer.ibm.com/languages/java/semeru-runtimes/downloads/) however also the native distributions and other are compatible.
+To play Mastermind on your device a Java distribution it's firstly required. Personally, we suggest as distribution the [Semeru 1.8.0_402](https://developer.ibm.com/languages/java/semeru-runtimes/downloads/) that is the best in rendering Processing 3 graphics, however also the native distributions and other are compatible.
 
-The only problematic distribution are the OpenJDK ones which create problems with Processing 3 structure. Using these distributions the game will not run totally. If you are able to find other incompatible or problematic distributions, please notify it to us.
+The only problematic distributions are the OpenJDK ones which create problems with Processing 3 structure. Using these distributions the game will not run totally. If you are able to find other incompatible or problematic distributions, please notify it to us.
 
 Having a suitable distribution, Mastermind can be play simply running "Mastermind.jar" which is located inside the directory "~/out/artifacts/Mastermind_jar/". To run the file from terminal you have to travel to the directory where the .jar file is located and than using the command:
 
@@ -33,7 +33,7 @@ Talking about our digital porting, running the game, after a small splashscreen,
 
 From here you will able to
 
-- *Play a Singleplayer Game*: play a traditional game of Mastermind trying to guess a random generated code. There are three difficulties to play the game. To more information you can find an extensive description of the difficulties in-game pressing on the "?" button in the Difficulty choice screen.
+- *Play a Singleplayer Game*: play a traditional game of Mastermind trying to guess a random generated code. You can choose between three difficulties to play the game. For more information you can find an extensive description of the difficulties in-game pressing on the "?" button in the Difficulty choice screen.
 - *Play a Multiplayer Game*: challenge your friends in a 2-player local mode. The code it's the same for both of the players and your have to guess the code before your opponent.
 - *See the credits of the game*
 - *Exit from the game*
