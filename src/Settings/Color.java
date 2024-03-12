@@ -1,6 +1,6 @@
 package Settings;
 
-public class Color extends Trials { // TODO: vedere se si può mettere questa classe come private
+public class Color extends Trials {
 
     private String lvlofdifficulty;
     private String[] template; // String[] containing the series of colors that will be used
@@ -67,19 +67,5 @@ public class Color extends Trials { // TODO: vedere se si può mettere questa cl
 
         return indexFound; // if indexFound == -1, the selected color is not in the list
     }
-
-    /*
-     * public static void main(String[] args) {
-     * // String input = System.console().readLine();
-     * Color templatemode = new Color("HARD");
-     * System.out.println(templatemode.getLvlofdifficulty());
-     * System.out.println(templatemode.getLengthTemplate());
-     * System.out.println(templatemode.getColorFromNumber(2));
-     * System.out.println(templatemode.getNumberFromColor("magenta"));
-     * System.out.println("-----------");
-     * System.out.println(templatemode.getNumberofcolor());
-     * System.out.println(templatemode.getNumberoftrials());
-     * }
-     */
 
 }
