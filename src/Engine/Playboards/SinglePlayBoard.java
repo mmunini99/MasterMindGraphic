@@ -60,10 +60,10 @@ public class SinglePlayBoard extends GenericPlayBoard {
         CheckButton = new Button("CHECK",SW);
         CheckButton.setPosition(Math.round(SW.width*0.16F),SW.height/16);
         CheckButton.setButtonColor(0,255,217);
-        CheckButton.setTextcolor(0,0,0);
+        CheckButton.setTextColor(0,0,0);
         CheckButton.setSize(Math.round(SW.width*0.68F),SW.height/8);
-        CheckButton.setTextsizePerc(0.6F);
-        CheckButton.setPaddingsPerc(0.375F,0.15F);
+        CheckButton.setTextSizePct(0.6F);
+        CheckButton.setPaddingsPct(0.375F,0.15F);
     }
 
     //########################## PLAYBOARD FUNCTIONS ###############################
@@ -150,7 +150,7 @@ public class SinglePlayBoard extends GenericPlayBoard {
                 //Now we have three possibilities:
 
                 //A: Winning (guess is the secret code)
-                if(actual_game.getwinningstatus()){
+                if(actual_game.getWinningStatus()){
                     //Go to the win menu
                     myWorkflow.nextStep();
                     SW.clear();  //Clear all previous elements from the screen

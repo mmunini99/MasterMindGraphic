@@ -1,23 +1,20 @@
 package Settings;
 
 public class Trials {
+    private final int NumberOfTrials; //The number of trials available to the player.
 
-    private String lvlofdifficulty;
+    //The three difficulties.
+    static protected String type_hard = "HARD";
+    static protected String type_medium = "MEDIUM";
+    static protected String type_easy = "EASY";
 
-    private int numberofcolor;
-    private int numberoftrials;
-
-    static private String type_hard = "HARD";
-    static private String type_medium = "MEDIUM";
-    static private String type_easy = "EASY";
-
+    //Class Constructor
     public Trials(String lvl) {
-        this.lvlofdifficulty = lvl;
-        this.numberofcolor = setNumberofColor(lvlofdifficulty);
-        this.numberoftrials = setNumberofTrials(lvlofdifficulty);
+        this.NumberOfTrials = setNumberOfTrials(lvl);
     }
 
-    private int setNumberofTrials(String lvl) {
+    //The number of Trials is set according to the difficulty level
+    private int setNumberOfTrials(String lvl) {
         if (lvl.equals(type_hard)) {
             return 7;
         } else if (lvl.equals(type_medium)) {
@@ -25,28 +22,13 @@ public class Trials {
         } else if (lvl.equals(type_easy)) {
             return 15;
         } else {
-            return 0;
+            throw new RuntimeException("Trials: setNumberOfTrials: non existing difficulty level");
         }
     }
 
-    private int setNumberofColor(String lvl) {
-        if (lvl.equals(type_hard)) {
-            return 4;
-        } else if (lvl.equals(type_medium)) {
-            return 4;
-        } else if (lvl.equals(type_easy)) {
-            return 3;
-        } else {
-            return 0;
-        }
-    }
-
-    public int getNumberofcolor() {
-        return numberofcolor;
-    }
-
-    public int getNumberoftrials() {
-        return numberoftrials;
+    //A get function to obtain the number of trials.
+    public int getNumberOfTrials() {
+        return NumberOfTrials;
     }
 
 }

@@ -2,70 +2,37 @@ package Settings;
 
 public class Color extends Trials {
 
-    private String lvlofdifficulty;
-    private String[] template; // String[] containing the series of colors that will be used
+    private final String[] template; // String[] containing the series of colors that will be used
 
-    static private String type_hard = "HARD";
-    static private String type_medium = "MEDIUM";
-    static private String type_easy = "EASY";
+    //The color template used for game in Medium and Hard mode
+    private final String[] HardTemplate = { "blue", "yellow", "green", "pink", "brown", "magenta" };
 
-    private final String[] hardtemplate = { "blue", "yellow", "green", "pink", "brown", "magenta" };
+    //The color template used for game in Easy mode
+    private final String[] EasyTemplate = { "blue", "yellow", "green" };
 
-    private final String[] easytemplate = { "blue", "yellow", "green" };
-
+    //Class constructor. Color is an extension of Trials so Trials parameter are set and then the template info.
     public Color(String lvl) {
         super(lvl);
-        this.lvlofdifficulty = lvl;
         this.template = setTemplate(lvl);
     }
 
-    public String getLvlofdifficulty() {
-        return lvlofdifficulty;
-    }
-
-    public String[] getTemplate() {
-        return template;
-    }
-
+    //Get the length of the template a.k.a. the number of colors
     public int getLengthTemplate() {
         return template.length;
     }
 
-    public void setLvlofdifficulty(String lvl) {
-        this.lvlofdifficulty = lvl;
-    }
-
+    //According to the difficulty, the template is set.
     private String[] setTemplate(String lvl) {
         if (lvl.equals(type_hard)) {
-            return hardtemplate;
+            return HardTemplate;
         } else if (lvl.equals(type_medium)) {
-            return hardtemplate;
+            return HardTemplate;
         } else if (lvl.equals(type_easy)) {
-            return easytemplate;
+            return EasyTemplate;
         } else {
-            return null; // probably it won't be used, because the program will keep asking for a valid answer
+            throw new RuntimeException("Color: setTemplate: non existing difficulty level");
         }
 
-    }
-
-    public String getColorFromNumber(int position) {
-
-        return template[position];
-
-    }
-
-    public int getNumberFromColor(String ExtractedColor) {
-
-        int indexFound = -1;
-
-        for (int i = 0; i < template.length; i++) {
-            if (template[i].equals(ExtractedColor)) {
-                indexFound += i + 1;
-                break;
-            }
-        }
-
-        return indexFound; // if indexFound == -1, the selected color is not in the list
     }
 
 }

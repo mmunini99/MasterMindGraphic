@@ -94,18 +94,18 @@ public class EndGameMenus {
         //Set main menu button characteristics
         MainMenuButton.setPosition(Math.round(SW.width*0.08F),2*SW.height/3);
         MainMenuButton.setButtonColor(0,255,217);
-        MainMenuButton.setTextcolor(150,0,150);
+        MainMenuButton.setTextColor(150,0,150);
         MainMenuButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        MainMenuButton.setTextsizePerc(0.225F);
-        MainMenuButton.setPaddingsPerc(0.135F,0.33F);
+        MainMenuButton.setTextSizePct(0.225F);
+        MainMenuButton.setPaddingsPct(0.135F,0.33F);
 
         //Set exit button characteristics
         ExitButton.setPosition(Math.round(SW.width*0.695F),2*SW.height/3);
         ExitButton.setButtonColor(0,255,217);
-        ExitButton.setTextcolor(150,0,150);
+        ExitButton.setTextColor(150,0,150);
         ExitButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        ExitButton.setTextsizePerc(0.225F);
-        ExitButton.setPaddingsPerc(0.15F,0.33F);
+        ExitButton.setTextSizePct(0.225F);
+        ExitButton.setPaddingsPct(0.15F,0.33F);
 
 
         //Set win text (SP) button characteristics

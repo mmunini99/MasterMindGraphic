@@ -71,10 +71,10 @@ public class MultiPlayBoard extends GenericPlayBoard{
         CheckButton = new Button("CHECK",SW);
         CheckButton.setPosition(Math.round(SW.width*0.16F),SW.height/16);
         CheckButton.setButtonColor(0,255,217);
-        CheckButton.setTextcolor(0,0,0);
+        CheckButton.setTextColor(0,0,0);
         CheckButton.setSize(Math.round(SW.width*0.68F),SW.height/8);
-        CheckButton.setTextsizePerc(0.6F);
-        CheckButton.setPaddingsPerc(0.375F,0.15F);
+        CheckButton.setTextSizePct(0.6F);
+        CheckButton.setPaddingsPct(0.375F,0.15F);
 
         //Instantiate and set characteristics of the Game Text of Player 1 (Player 1 turn)
         P1text = new GameText(SW);
@@ -206,7 +206,7 @@ public class MultiPlayBoard extends GenericPlayBoard{
                 //Now we have three possibilities:
 
                 //A: Player 1 winning (guess of P1 is the secret code)
-                if(actual_game1.getwinningstatus()){
+                if(actual_game1.getWinningStatus()){
                     //Go to the win menu but before communicate the winner to the EndGameMenus
                     myWorkflow.getEndgamemenus().setWinner(actualPlayer);
                     myWorkflow.nextStep();
@@ -255,7 +255,7 @@ public class MultiPlayBoard extends GenericPlayBoard{
                 //Now we have three possibilities:
 
                 //A: Player 2 winning (guess of P2 is the secret code)
-                if(actual_game2.getwinningstatus()){
+                if(actual_game2.getWinningStatus()){
                     //Go to the win menu but before communicate the winner to the EndGameMenus
                     myWorkflow.getEndgamemenus().setWinner(actualPlayer);
                     myWorkflow.nextStep();

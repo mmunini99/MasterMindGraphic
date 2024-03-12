@@ -15,7 +15,7 @@ screen are pressed and give response if such event happen. Similarly works for t
 public class Events_Manager {
 
     //########################### TIME VARS ###############################################
-    //All of these vars are used to manage the time eventss
+    //All of these vars are used to manage the time events
 
     //Is a time event active?
     private boolean time_event_active = false;

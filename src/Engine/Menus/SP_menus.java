@@ -70,26 +70,26 @@ public class SP_menus {
         //Easy mode button setup
         EasyButton.setPosition(Math.round(SW.width*0.08F),2*SW.height/3);
         EasyButton.setButtonColor(0,150,0);
-        EasyButton.setTextcolor(0,0,0);
+        EasyButton.setTextColor(0,0,0);
         EasyButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        EasyButton.setTextsizePerc(0.35F);
-        EasyButton.setPaddingsPerc(0.26F,0.25F);
+        EasyButton.setTextSizePct(0.35F);
+        EasyButton.setPaddingsPct(0.26F,0.25F);
 
         //Medium mode button setup
         MediumButton.setPosition(Math.round(SW.width*0.385F),2*SW.height/3);
         MediumButton.setButtonColor(255,255,0);
-        MediumButton.setTextcolor(0,0,0);
+        MediumButton.setTextColor(0,0,0);
         MediumButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        MediumButton.setTextsizePerc(0.35F);
-        MediumButton.setPaddingsPerc(0.13F,0.25F);
+        MediumButton.setTextSizePct(0.35F);
+        MediumButton.setPaddingsPct(0.13F,0.25F);
 
         //Hard mode button setup
         HardButton.setPosition(Math.round(SW.width*0.69F),2*SW.height/3);
         HardButton.setButtonColor(255,0,0);
-        HardButton.setTextcolor(0,0,0);
+        HardButton.setTextColor(0,0,0);
         HardButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        HardButton.setTextsizePerc(0.35F);
-        HardButton.setPaddingsPerc(0.225F,0.25F);
+        HardButton.setTextSizePct(0.35F);
+        HardButton.setPaddingsPct(0.225F,0.25F);
 
         //Rules button setup
         RulesButton.setPosition(Math.round(SW.width*0.88F),SW.height/16);

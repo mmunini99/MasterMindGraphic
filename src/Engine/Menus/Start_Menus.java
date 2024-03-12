@@ -77,37 +77,37 @@ public class Start_Menus {
         SP_Button = new Button("SINGLE-PLAYER",SW);
         SP_Button.setPosition(SW.width/5,SW.height/2);
         SP_Button.setButtonColor(0,255,217);
-        SP_Button.setTextcolor(150,0,150);
+        SP_Button.setTextColor(150,0,150);
         SP_Button.setSize(Math.round(SW.width*0.23F),Math.round(SW.height*0.16F));
-        SP_Button.setTextsizePerc(0.25F);
-        SP_Button.setPaddingsPerc(0.11F,0.30F);
+        SP_Button.setTextSizePct(0.25F);
+        SP_Button.setPaddingsPct(0.11F,0.30F);
 
         //Multiplayer button setup
         MP_Button = new Button("MULTIPLAYER",SW);
         MP_Button.setPosition(Math.round(SW.width-(SW.width/5.0F+SW.width*0.23F)),SW.height/2);
         MP_Button.setButtonColor(0,255,217);
-        MP_Button.setTextcolor(150,0,150);
+        MP_Button.setTextColor(150,0,150);
         MP_Button.setSize(Math.round(SW.width*0.23F),Math.round(SW.height*0.16F));
-        MP_Button.setTextsizePerc(0.25F);
-        MP_Button.setPaddingsPerc(0.15F,0.30F);
+        MP_Button.setTextSizePct(0.25F);
+        MP_Button.setPaddingsPct(0.15F,0.30F);
 
         //Exit button setup
         Exit_Button = new Button("EXIT GAME",SW);
         Exit_Button.setPosition(SW.width/5,Math.round(SW.height*0.75F));
         Exit_Button.setButtonColor(0,255,217);
-        Exit_Button.setTextcolor(150,0,150);
+        Exit_Button.setTextColor(150,0,150);
         Exit_Button.setSize(Math.round(SW.width*0.23F),Math.round(SW.height*0.16F));
-        Exit_Button.setTextsizePerc(0.25F);
-        Exit_Button.setPaddingsPerc(0.215F,0.30F);
+        Exit_Button.setTextSizePct(0.25F);
+        Exit_Button.setPaddingsPct(0.215F,0.30F);
 
         //Credits button setup
         Credits_Button = new Button("CREDITS",SW);
         Credits_Button.setPosition(Math.round(SW.width-(SW.width/5.0F+SW.width*0.23F)),Math.round(SW.height*0.75F));
         Credits_Button.setButtonColor(0,255,217);
-        Credits_Button.setTextcolor(150,0,150);
+        Credits_Button.setTextColor(150,0,150);
         Credits_Button.setSize(Math.round(SW.width*0.23F),Math.round(SW.height*0.16F));
-        Credits_Button.setTextsizePerc(0.25F);
-        Credits_Button.setPaddingsPerc(0.275F,0.30F);
+        Credits_Button.setTextSizePct(0.25F);
+        Credits_Button.setPaddingsPct(0.275F,0.30F);
 
         //Back button setup
         Back_Button = new Button(SW.loadImage("Images/back.png"),SW);

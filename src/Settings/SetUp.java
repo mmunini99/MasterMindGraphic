@@ -4,13 +4,8 @@ package Settings;
 
 public class SetUp extends Color {
 
-    private String level; // level is either HARD, MEDIUM or EASY
-
     public SetUp(String lvl) {
         super(lvl);
-
-        this.level = lvl;
-
     }
 
 }

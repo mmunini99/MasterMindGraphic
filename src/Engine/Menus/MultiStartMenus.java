@@ -87,10 +87,10 @@ public class MultiStartMenus {
         startbutton = new Button("START GAME",SW);
         startbutton.setPosition(Math.round(SW.width/3.0F),Math.round(SW.height*0.75F));
         startbutton.setButtonColor(0,255,217);
-        startbutton.setTextcolor(150,0,150);
+        startbutton.setTextColor(150,0,150);
         startbutton.setSize(Math.round(SW.width/3.0F),Math.round(SW.height*0.16F));
-        startbutton.setTextsizePerc(0.35F);
-        startbutton.setPaddingsPerc(0.175F,0.25F);
+        startbutton.setTextSizePct(0.35F);
+        startbutton.setPaddingsPct(0.175F,0.25F);
 
         //Load image from game files for the multiplayer rules
         RulesImage = SW.loadImage("Images/multiplayer_rules.png");
@@ -115,26 +115,26 @@ public class MultiStartMenus {
         //EasyButton setup
         EasyButton.setPosition(Math.round(SW.width*0.08F),2*SW.height/3);
         EasyButton.setButtonColor(0,150,0);
-        EasyButton.setTextcolor(0,0,0);
+        EasyButton.setTextColor(0,0,0);
         EasyButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        EasyButton.setTextsizePerc(0.35F);
-        EasyButton.setPaddingsPerc(0.26F,0.25F);
+        EasyButton.setTextSizePct(0.35F);
+        EasyButton.setPaddingsPct(0.26F,0.25F);
 
         //MediumButton setup
         MediumButton.setPosition(Math.round(SW.width*0.385F),2*SW.height/3);
         MediumButton.setButtonColor(255,255,0);
-        MediumButton.setTextcolor(0,0,0);
+        MediumButton.setTextColor(0,0,0);
         MediumButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        MediumButton.setTextsizePerc(0.35F);
-        MediumButton.setPaddingsPerc(0.13F,0.25F);
+        MediumButton.setTextSizePct(0.35F);
+        MediumButton.setPaddingsPct(0.13F,0.25F);
 
         //HardButton setup
         HardButton.setPosition(Math.round(SW.width*0.69F),2*SW.height/3);
         HardButton.setButtonColor(255,0,0);
-        HardButton.setTextcolor(0,0,0);
+        HardButton.setTextColor(0,0,0);
         HardButton.setSize(Math.round(SW.width*0.225F),SW.height/5);
-        HardButton.setTextsizePerc(0.35F);
-        HardButton.setPaddingsPerc(0.225F,0.25F);
+        HardButton.setTextSizePct(0.35F);
+        HardButton.setPaddingsPct(0.225F,0.25F);
 
         //RulesButton setup
         RulesButton.setPosition(Math.round(SW.width*0.88F),SW.height/16);
