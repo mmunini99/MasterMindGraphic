@@ -1,7 +1,5 @@
 package Settings;
 
-import java.util.Arrays;
-
 public class Round {
     public int roundNumber; // roundNumber identifies the current round in the series of rounds that are
                      // performed
@@ -46,8 +44,6 @@ public class Round {
         feedback[2] = guess.length - feedback[0] - feedback[1];
 
 
-
-
         this.secretCode = secretCode;
         this.guess = guess;
         this.feedback = feedback;
@@ -55,7 +51,6 @@ public class Round {
     }
 
     // Getter methods
-
 
     public int[] getSecretCode() {
         return secretCode;
@@ -68,8 +63,6 @@ public class Round {
     public int[] getFeedback() {
         return feedback;
     }
-
-
 
 
 }

@@ -13,28 +13,4 @@ public class SetUp extends Color {
 
     }
 
-    /*
-     * public static void main(String[] args) {
-     * 
-     * 
-     * String input = System.console().readLine();
-     * 
-     * 
-     * 
-     * 
-     * SetUp prova = new SetUp(input);
-     * 
-     * 
-     * System.out.println(prova.getLvlofdifficulty());
-     * System.out.println(prova.getLengthTemplate());
-     * System.out.println(prova.getColorFromNumber(2));
-     * System.out.println(prova.getNumberFromColor("magenta"));
-     * System.out.println("-----------");
-     * System.out.println(prova.getNumberofcolor());
-     * System.out.println(prova.getNumberoftrials());
-     * 
-     * }
-     * 
-     */
-
 }

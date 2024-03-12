@@ -49,15 +49,4 @@ public class Trials {
         return numberoftrials;
     }
 
-    /*
-     * public static void main(String[] args) {
-     * 
-     * String input = System.console().readLine();
-     * Trials prova = new Trials(input);
-     * System.out.println(prova.getNumberofcolor());
-     * System.out.println(prova.getNumberoftrials());
-     * 
-     * }
-     */
-
 }
