@@ -10,7 +10,7 @@ To play Mastermind on your device a Java distribution is required. Personally, w
 
 The problematic distributions are only the OpenJDK ones which create problems with the structure of Processing 3. Using these distributions the game will not run totally. If you are able to find other incompatible or problematic distributions, please notify it to us.
 
-Having a suitable distribution, Mastermind can be played simply running "Mastermind.jar" which is located inside the directory `~/out/artifacts/Mastermind_jar/`. To run the file from terminal you have to travel to the directory where the .jar file is located and then use the command:
+Having a suitable distribution, Mastermind can be played simply running `Mastermind.jar` which is located inside the directory `~/out/artifacts/Mastermind_jar/`. To run the file from terminal you have to travel to the directory where the .jar file is located and then use the command:
 
 ```bash
 java -jar Mastermind.jar
