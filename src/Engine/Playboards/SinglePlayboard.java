@@ -64,7 +64,7 @@ public class SinglePlayboard extends GenericPlayboard {
     public void initializePlayBoard(){
 
         actualGame = new Play();
-        actualGame.initializePlay(myWorkflow.getDifficultyAsString());
+        actualGame.inizializePlay(myWorkflow.getDifficultyAsString());
 
         switch (myWorkflow.getDifficultyAsString()){
             case "EASY":
@@ -138,7 +138,7 @@ public class SinglePlayboard extends GenericPlayboard {
                 }
 
                 //B: Defeat
-                if(!actualGame.areTrialsLeft(actualGame.getCount())){
+                if(!actualGame.areTrialsLeft(actualGame.getCount()-1)){
                     myWorkflow.getEndGameMenus().setSecretCode(actualGame.getSecretCode(),gameboard.getPalette());
                     myWorkflow.goToStep(5);
                     SW.clear();

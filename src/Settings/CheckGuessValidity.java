@@ -51,7 +51,7 @@ public class CheckGuessValidity {
         return guess;
     }
 
-    private boolean isCorrectValueInterval(int[] guess, char minChar, char maxChar, String input) {
+    public boolean isCorrectValueInterval(int[] guess, char minChar, char maxChar, String input) {
         boolean validFormat = true;
         for (int i = 0; i < DIGIT_COUNT; i++) {
             char digit = input.charAt(i);
@@ -64,7 +64,7 @@ public class CheckGuessValidity {
         return validFormat;
     }
 
-    private boolean isCorrectLength(String input) {
+    public boolean isCorrectLength(String input) {
         return input.length() == DIGIT_COUNT;
     }
 }

@@ -9,19 +9,25 @@ public class TemplateMatrix {
     private final int lengthofguess;
     private final int lengthoffeedback = 3;
 
-    private int[][] template;
+    public int[][] template;
 
-    public TemplateMatrix(int lengthoftrials, int lengthofguess) {
+    PrintString printString;
+    GameMessages gameMessages;
 
-        this.lengthofguess = lengthofguess;
+    public TemplateMatrix(int lengthOfTrials, int lengthOfGuess, boolean printToFile) {
 
-        int ncolumn = lengthofguess + lengthoffeedback + 1;
-        int nrow = lengthoftrials;
+        this.lengthofguess = lengthOfGuess;
+
+        int ncolumn = lengthOfGuess + lengthoffeedback + 1;
+        int nrow = lengthOfTrials;
         this.template = new int[nrow][ncolumn];
+
+        printString = new PrintString(printToFile);
+        gameMessages = new GameMessages(printToFile);
 
     }
 
-    public void setguess(int[] guess, int[] feedback, int count) {
+    public void setGuess(int[] guess, int[] feedback, int count) {
 
         int ncolumn = lengthofguess + lengthoffeedback + 1;
 
@@ -36,50 +42,48 @@ public class TemplateMatrix {
             this.template[count][i] = feedback[i - 5];
         }
 
-
-
-
-
     }
 
 
-    public void printtemplate(int count) {
-
-        // System.out.println("count: " + count); // print the number of trials
+    public void printTemplate(int count) {
 
         if (count == 0) {
-            System.out.println(GameMessages.columnsNameTemplateGuesses());
+            gameMessages.columnsNameTemplateGuesses();
+            int round = 0;
 
-            for (int j = 0; j < template[0].length; j++) {
+            String output = "";
+            output = getTemplateOutput(output, template, round);
 
-                System.out.print(template[0][j] + "\t");
+            printString.redirectOutput(output);
 
-            }
-
-            System.out.println();
+            printString.redirectOutput("");
 
         } else if (count >= 1) {
 
+            gameMessages.columnsNameTemplateGuesses(); // TODO sure?
 
+            String output = "";
+            // for (int i = 0; i < count; i++) {
+            //     output += "\n";
+            // }
 
-            System.out.println(GameMessages.columnsNameTemplateGuesses());
+            for (int i = 0; i < count; i++) { // TODO sure?
+                output = getTemplateOutput(output, template, i);
 
-            for (int i = 0; i < count; i++) {
-
-                System.out.println();
+                output += "\n";
             }
 
-            for (int i = 0; i < count; i++) {
-                for (int j = 0; j < template[i].length; j++) {
-                    System.out.print(template[i][j] + "\t");
-                }
+            printString.redirectOutput(output);
 
-                System.out.println();
-            }
        }
     }
 
+    private String getTemplateOutput(String output, int[][] template, int round) {
 
-
+        for (int j = 0; j < template[round].length; j++) {
+            output += template[round][j] + "\t";
+        }
+        return output;
+    }
 
 }

@@ -86,10 +86,10 @@ public class MultiPlayboard extends GenericPlayboard {
     public void initializePlayBoard(){
 
         actualGamePlayer1 = new Play();
-        actualGamePlayer1.initializePlay(myWorkflow.getDifficultyAsString());
+        actualGamePlayer1.inizializePlay(myWorkflow.getDifficultyAsString());
 
         actualGamePlayer2 = new Play();
-        actualGamePlayer2.initializePlay(myWorkflow.getDifficultyAsString());
+        actualGamePlayer2.inizializePlay(myWorkflow.getDifficultyAsString());
 
         actualGamePlayer2.setSecretCode(actualGamePlayer1.getSecretCode());
 
@@ -183,7 +183,7 @@ public class MultiPlayboard extends GenericPlayboard {
                 }
 
                 //B: Drawing
-                if(!actualGamePlayer1.areTrialsLeft(actualGamePlayer1.getCount())){
+                if(!actualGamePlayer1.areTrialsLeft(actualGamePlayer1.getCount()-1)){
                     myWorkflow.getEndGameMenus().setSecretCode(actualGamePlayer1.getSecretCode(), gameboardPlayer1.getPalette());
                     myWorkflow.goToStep(11);
                     SW.clear();
@@ -228,7 +228,7 @@ public class MultiPlayboard extends GenericPlayboard {
                 }
 
                 //B: Drawing
-                if(!actualGamePlayer2.areTrialsLeft(actualGamePlayer2.getCount())){
+                if(!actualGamePlayer2.areTrialsLeft(actualGamePlayer2.getCount()-1)){
                     myWorkflow.getEndGameMenus().setSecretCode(actualGamePlayer2.getSecretCode(), gameboardPlayer2.getPalette());
                     myWorkflow.goToStep(11);
                     SW.clear();
