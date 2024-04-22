@@ -8,7 +8,7 @@ This repository contains the graphic version of Mastermind. The game is implemen
 
 To play Mastermind on your device a Java distribution is required. Personally, we suggest as distribution the [Semeru 1.8.0_402](https://developer.ibm.com/languages/java/semeru-runtimes/downloads/) that is the best in rendering Processing 3 graphics, however also the native distributions and other ones are compatible.
 
-The problematic distributions are only the OpenJDK ones which create problems with the structure of Processing 3. Using these distributions the game will not run totally. If you are able to find other incompatible or problematic distributions, please notify it to us.
+The problematic distributions are only the OpenJDK ones which create problems with the structure of Processing 3. Using these distributions the game will not run totally. If you are able to find other incompatible or problematic distributions, please notify it to us. This software cannot work properly also on iOS so it's not usable on Mac.
 
 Having a suitable distribution, Mastermind can be played simply running `Mastermind.jar` which is located inside the directory `~/out/artifacts/Mastermind_jar/`. To run the file from terminal you have to travel to the directory where the .jar file is located and then use the command:
 
