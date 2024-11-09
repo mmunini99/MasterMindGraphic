@@ -1,5 +1,5 @@
 # MasterMindGraphic: graphic version of Mastermind
-### Group: [Cabriel Lorenzo](https://github.com/lcabriel) [SM3500518] | [Da Vinchie Lisa](https://github.com/LisaDaVinchie) [SM3500574] | [Marsich Gaia](https://github.com/gmarsich) [SM3500600] | [Munini Matteo](https://github.com/mmunini99) [SM3600006]
+### Team: [Cabriel Lorenzo](https://github.com/lcabriel) | [Da Vinchie Lisa](https://github.com/LisaDaVinchie) | [Marsich Gaia](https://github.com/gmarsich) | [Munini Matteo](https://github.com/mmunini99)
 
 This repository contains the graphic version of Mastermind. The game is implemented using Java and the IntelliJ version of Processing 3 (see paragraph **Engine** for the engine repository).
 
